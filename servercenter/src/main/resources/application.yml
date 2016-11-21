@@ -1,0 +1,67 @@
+spring:
+  profiles:
+    active: peer229
+
+server:
+  port: 1111
+
+logging:
+  file: ./log/log.log
+
+eureka:
+  instance:
+    prefer-ip-address: true
+
+---
+spring:
+  profiles: peer
+  application:
+    name: server-center
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    service-url:
+      defaultZone:  http://192.168.31.224:${server.port}/eureka/
+  instance:
+    hostname: peer
+
+---
+spring:
+  profiles: peer227
+  application:
+    name: server-center
+eureka:
+  client:
+#    registerWithEureka: false
+#    fetchRegistry: false
+    service-url:
+      defaultZone:  http://192.168.2.228:${server.port}/eureka/,http://192.168.2.229:${server.port}/eureka/
+  instance:
+    hostname: peer227
+
+---
+spring:
+  profiles: peer228
+  application:
+    name: server-center
+eureka:
+  client:
+#    registerWithEureka: false
+#    fetchRegistry: false
+    service-url:
+      defaultZone:  http://192.168.2.229:${server.port}/eureka/,http://192.168.2.227:${server.port}/eureka/
+  instance:
+    hostname: peer228
+
+---
+spring:
+  profiles: peer229
+  application:
+    name: server-center
+eureka:
+  client:
+    service-url:
+      defaultZone:  http://192.168.2.227:${server.port}/eureka/,http://192.168.2.228:${server.port}/eureka/
+  instance:
+      hostname: peer229
