@@ -1,0 +1,41 @@
+
+spring:
+    datasource:
+        name: test
+        url: jdbc:mysql://192.168.2.172:3306/waikuai
+        username: waikuai
+        password: waikuai
+        # 使用druid数据源
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        filters: stat
+        maxActive: 20
+        initialSize: 1
+        maxWait: 60000
+        minIdle: 1
+        timeBetweenEvictionRunsMillis: 60000
+        minEvictableIdleTimeMillis: 300000
+        validationQuery: select 'x'
+        testWhileIdle: true
+        testOnBorrow: false
+        testOnReturn: false
+        poolPreparedStatements: true
+        maxOpenPreparedStatements: 20
+    application:
+      name: wcb-user
+server:
+  port: 8080
+
+
+mybatis:
+  #mapper-locations: classpath:cn.waicaibao.user.mapper/*.xml
+  #type-aliases-package: classpath:cn.waicaibao.user.entity
+  config-location: classpath:mybatis-config.xml
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url.defaultZone: http://192.168.2.227:1111/eureka/,http://192.168.2.228:1111/eureka/,http://192.168.2.229:1111/eureka/
+logging:
+  level: DEBUG

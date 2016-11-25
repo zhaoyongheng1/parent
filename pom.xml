@@ -17,6 +17,10 @@
         <module>turbine</module>
         <module>hystrixdashboard</module>
         <module>zuul</module>
+        <module>wcbuser</module>
+        <module>wcbutil</module>
+        <module>oauth</module>
+        <module>sso</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
