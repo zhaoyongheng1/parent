@@ -22,6 +22,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.security.oauth2.provider.approval.ApprovalStore;
+import org.springframework.security.oauth2.provider.approval.ApprovalStoreUserApprovalHandler;
 import org.springframework.security.oauth2.provider.approval.JdbcApprovalStore;
 import org.springframework.security.oauth2.provider.approval.TokenStoreUserApprovalHandler;
 import org.springframework.security.oauth2.provider.client.JdbcClientDetailsService;
@@ -94,14 +95,19 @@ public class MyAuthConfiguration extends AuthorizationServerConfigurerAdapter {
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+//
+//        TokenStoreUserApprovalHandler handler = new TokenStoreUserApprovalHandler();
+//        handler.setRequestFactory(new DefaultOAuth2RequestFactory(clientDetails()));
+//        handler.setTokenStore(tokenStore());
 
-        TokenStoreUserApprovalHandler handler = new TokenStoreUserApprovalHandler();
-        handler.setRequestFactory(new DefaultOAuth2RequestFactory(clientDetails()));
-        handler.setTokenStore(tokenStore());
+
+        ApprovalStoreUserApprovalHandler _handler = new ApprovalStoreUserApprovalHandler();
+        _handler.setRequestFactory(new DefaultOAuth2RequestFactory(clientDetails()));
+        _handler.setApprovalStore(approvalStore());
+        _handler.setClientDetailsService(clientDetails());
         endpoints.tokenStore(tokenStore());
-
-        endpoints.userApprovalHandler(handler);
-        endpoints.approvalStore(approvalStore());
+        endpoints.userApprovalHandler(_handler);
+  //      endpoints.approvalStore(approvalStore());
         endpoints.authorizationCodeServices(authorizationCodeServices());
   //      endpoints.authenticationManager(authenticationManager);
         endpoints.allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.PUT);
@@ -128,7 +134,6 @@ public class MyAuthConfiguration extends AuthorizationServerConfigurerAdapter {
         //oauthServer.checkTokenAccess("isAuthenticated()");
 //        oauthServer.checkTokenAccess("permitAll()");
 //        oauthServer.allowFormAuthenticationForClients();
-
         oauthServer.tokenKeyAccess("permitAll()").checkTokenAccess(
                 "isAuthenticated()");
 
