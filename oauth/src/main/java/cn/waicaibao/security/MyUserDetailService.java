@@ -20,6 +20,6 @@ public class MyUserDetailService implements UserDetailsService {
         Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
         SimpleGrantedAuthority authority = new SimpleGrantedAuthority("ROLE_TEST,USER");
         authorities.add(authority);
-        return new User("ly","ly",authorities);
+        return new User(s,"ly",authorities);
     }
 }
