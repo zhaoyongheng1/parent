@@ -13,7 +13,6 @@ security:
 logging:
   level:
     org.springframework.security: DEBUG
-    com.netflix.discovery: 'OFF'
 spring:
   application:
     name: sso

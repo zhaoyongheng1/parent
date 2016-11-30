@@ -11,7 +11,6 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 
 @SpringCloudApplication
 @EnableZuulProxy
-@EnableResourceServer
 public class ZuulApplication {
 
 	public static void main(String[] args) {
@@ -22,15 +21,4 @@ public class ZuulApplication {
 //	public AccessFilter accessFilter() {
 //		return new AccessFilter();
 //	}
-	@Configuration
-	@Order(-20)
-	protected static class LoginConfig extends WebSecurityConfigurerAdapter {
-
-		@Override
-		protected void configure(HttpSecurity http) throws Exception {
-			http.authorizeRequests().antMatchers("/uaa/**").permitAll();
-		}
-
-
-	}
 }

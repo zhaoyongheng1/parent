@@ -28,4 +28,9 @@ public class DemoController {
         logger.info("/add, host:" + instance.getHost() + ", service_id:" + instance.getServiceId() + ", result:" + r);
         return r;
     }
+    @RequestMapping(value = "/add1" ,method = RequestMethod.GET)
+    public String add() {
+
+        return "111111111111111";
+    }
 }

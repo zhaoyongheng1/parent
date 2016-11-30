@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class DemoController {
     @RequestMapping("/demo1")
-    @PreAuthorize("hasPermission('demo1')")
+    @PreAuthorize("hasPermission('PER','demo1')")
     public String demo1(){
         return "demo1";
     }
