@@ -19,7 +19,7 @@
         <module>zuul</module>
         <module>wcbuser</module>
         <module>wcbutil</module>
-        <module>sso</module>
+        <module>ui</module>
         <module>authserver</module>
     </modules>
     <parent>

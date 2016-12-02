@@ -9,7 +9,10 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.oauth2.client.filter.OAuth2ClientContextFilter;
-import org.springframework.security.web.csrf.*;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+import org.springframework.security.web.csrf.CsrfFilter;
+import org.springframework.security.web.csrf.CsrfToken;
+import org.springframework.security.web.csrf.CsrfTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -20,7 +23,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import java.io.IOException;
 import java.util.regex.Pattern;
 
@@ -34,46 +36,42 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private static final String CSRF_COOKIE_NAME = "XSRF-TOKEN";
     private static final String CSRF_HEADER_NAME = "X-XSRF-TOKEN";
 
-    @Bean
-    @Primary
-    public OAuth2ClientContextFilter dynamicOauth2ClientContextFilter() {
-        return new DynamicOauth2ClientContextFilter();
-    }
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers("/uaa/**", "/login").permitAll().anyRequest().authenticated()
+                .and().addFilterAfter(csrfHeaderFilter(), CsrfFilter.class)
+                .csrf()
+                //.requireCsrfProtectionMatcher(csrfRequestMatcher())
+                .csrfTokenRepository(csrfTokenRepository())
                 .and()
-                .csrf().requireCsrfProtectionMatcher(csrfRequestMatcher()).csrfTokenRepository(csrfTokenRepository())
-                .and()
-                .addFilterAfter(csrfHeaderFilter(), CsrfFilter.class)
-                .logout().permitAll()
+                .logout().logoutUrl("/logout").permitAll()
                 .logoutSuccessUrl("/");
     }
 
-    private RequestMatcher csrfRequestMatcher() {
-        return new RequestMatcher() {
-            // Always allow the HTTP GET method
-            private final Pattern allowedMethods = Pattern.compile("^(GET|HEAD|OPTIONS|TRACE)$");
-
-            // Disable CSFR protection on the following urls:
-            private final AntPathRequestMatcher[] requestMatchers = { new AntPathRequestMatcher("/uaa/**") };
-
-            @Override
-            public boolean matches(HttpServletRequest request) {
-                if (allowedMethods.matcher(request.getMethod()).matches()) {
-                    return false;
-                }
-
-                for (AntPathRequestMatcher matcher : requestMatchers) {
-                    if (matcher.matches(request)) {
-                        return false;
-                    }
-                }
-                return true;
-            }
-        };
-    }
+//    private RequestMatcher csrfRequestMatcher() {
+//        return new RequestMatcher() {
+//            // Always allow the HTTP GET method
+//            private final Pattern allowedMethods = Pattern.compile("^(GET|HEAD|OPTIONS|TRACE)$");
+//
+//            // Disable CSFR protection on the following urls:
+//            private final AntPathRequestMatcher[] requestMatchers = { new AntPathRequestMatcher("/uaa/**") };
+//
+//            @Override
+//            public boolean matches(HttpServletRequest request) {
+//                if (allowedMethods.matcher(request.getMethod()).matches()) {
+//                    return false;
+//                }
+//
+//                for (AntPathRequestMatcher matcher : requestMatchers) {
+//                    if (matcher.matches(request)) {
+//                        return false;
+//                    }
+//                }
+//                return true;
+//            }
+//        };
+//    }
 
     private static Filter csrfHeaderFilter() {
         return new OncePerRequestFilter() {
@@ -84,7 +82,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 if (csrf != null) {
                     Cookie cookie = new Cookie(CSRF_COOKIE_NAME, csrf.getToken());
                     cookie.setPath("/");
-                    cookie.setSecure(true);
+                 //   cookie.setSecure(true);
                     response.addCookie(cookie);
                 }
                 filterChain.doFilter(request, response);

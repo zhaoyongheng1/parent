@@ -21,20 +21,27 @@ spring:
     testOnReturn: false
     poolPreparedStatements: true
     maxOpenPreparedStatements: 20
+  redis:
+    database: 9
+    host: 192.168.2.204
+    prot: 6379
+    password: foobared
+
 
 # Define the port where the UAA server would be running
 server:
   port: 8888
   # Use different context-path to avoid session cookie overlapping
   context-path: /uaa
-  use-forward-headers: false
+#  use-forward-headers: true
 
 # Define the Eureka server that handles service registration
 eureka:
   client:
     serviceUrl:
       defaultZone: http://192.168.2.227:1111/eureka/,http://192.168.2.228:1111/eureka/,http://192.168.2.229:1111/eureka/
-
+  instance:
+    prefer-ip-address: true
 # Define security
 security:
   basic:
@@ -42,9 +49,13 @@ security:
   user:
     password: password
   ignored: /css/**,/js/**,/favicon.ico,/webjars/**
+  sessions: if_required
 
 logging:
-  level.org.springframework.security: DEBUG
+  level.root: DEBUG
+  file: ./logs/log.log
+  level.org.apache.http: INFO
+  level.com.netflix.discovery: INFO
 
 
 

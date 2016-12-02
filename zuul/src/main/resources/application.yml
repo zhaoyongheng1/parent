@@ -37,6 +37,8 @@ security:
       clientSecret: acmesecret
       scope: write
     resource:
+#      user-info-uri: /uaa/oauth/user
+#      prefer-token-info: false
       jwt:
         keyValue: |
           -----BEGIN PUBLIC KEY-----
@@ -46,6 +48,7 @@ security:
       serviceId: ${PREFIX:}resource
 
 logging:
-  level.org.springframework.security: DEBUG
+  config: classpath:log4j2.yml
+
 
 
