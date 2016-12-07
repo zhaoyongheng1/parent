@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 /**
  * Created by liyang-macbook on 2016/12/1.
@@ -23,8 +25,10 @@ public class LoginController {
 
     @RequestMapping("/user")
     @ResponseBody
-    public Principal user(Principal user, org.apache.catalina.servlet4preview.http.HttpServletRequest request) {
-        return user;
+    public java.util.Map<String, Object> user(Principal user) {
+        Map<String, Object> map = new LinkedHashMap<>();
+        map.put("name", user.getName());
+        return map;
     }
 
 }

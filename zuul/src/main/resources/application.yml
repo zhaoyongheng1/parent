@@ -17,6 +17,7 @@ eureka:
 zuul:
   routes:
     server-provide: /demo/**
+    ui: /ui/**
     authserver:
       sensitiveHeaders:
       path: /uaa/**

@@ -31,6 +31,7 @@ import org.springframework.security.oauth2.provider.approval.JdbcApprovalStore;
 import org.springframework.security.oauth2.provider.client.JdbcClientDetailsService;
 import org.springframework.security.oauth2.provider.code.AuthorizationCodeServices;
 import org.springframework.security.oauth2.provider.code.JdbcAuthorizationCodeServices;
+import org.springframework.security.oauth2.provider.token.DefaultAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
@@ -80,8 +81,9 @@ public class UaaServiceApplication extends WebMvcConfigurerAdapter {
 		@Override
 		protected void configure(HttpSecurity http) throws Exception {
 			http.formLogin().loginPage("/login").permitAll()
-					.and().authorizeRequests()
-					.anyRequest().authenticated();
+//					.and()
+//					.requestMatchers().antMatchers("/login", "/oauth/authorize", "/oauth/confirm_access")
+					.and().authorizeRequests().anyRequest().authenticated();
 		}
 
 		@Override
@@ -145,6 +147,7 @@ public class UaaServiceApplication extends WebMvcConfigurerAdapter {
 			endpoints.userDetailsService(new MyUserDetailService());
 
 			endpoints.authenticationManager(authenticationManager);
+	//		endpoints.accessTokenConverter(new DefaultAccessTokenConverter());
 			endpoints.accessTokenConverter(jwtAccessTokenConverter());
 
 			LOG.info("==========="+endpoints.getAccessTokenConverter());

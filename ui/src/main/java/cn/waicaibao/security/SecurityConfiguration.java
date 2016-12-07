@@ -37,41 +37,41 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private static final String CSRF_HEADER_NAME = "X-XSRF-TOKEN";
 
 
+
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/uaa/**", "/login").permitAll().anyRequest().authenticated()
-                .and().addFilterAfter(csrfHeaderFilter(), CsrfFilter.class)
-                .csrf()
-                //.requireCsrfProtectionMatcher(csrfRequestMatcher())
-                .csrfTokenRepository(csrfTokenRepository())
+        http.authorizeRequests().antMatchers("/uaa/**", "/login","/info","/health").permitAll().anyRequest().authenticated()
                 .and()
-                .logout().logoutUrl("/logout").permitAll()
+                .csrf().requireCsrfProtectionMatcher(csrfRequestMatcher()).csrfTokenRepository(csrfTokenRepository())
+                .and()
+                .addFilterAfter(csrfHeaderFilter(), CsrfFilter.class)
+                .logout().permitAll()
                 .logoutSuccessUrl("/");
     }
 
-//    private RequestMatcher csrfRequestMatcher() {
-//        return new RequestMatcher() {
-//            // Always allow the HTTP GET method
-//            private final Pattern allowedMethods = Pattern.compile("^(GET|HEAD|OPTIONS|TRACE)$");
-//
-//            // Disable CSFR protection on the following urls:
-//            private final AntPathRequestMatcher[] requestMatchers = { new AntPathRequestMatcher("/uaa/**") };
-//
-//            @Override
-//            public boolean matches(HttpServletRequest request) {
-//                if (allowedMethods.matcher(request.getMethod()).matches()) {
-//                    return false;
-//                }
-//
-//                for (AntPathRequestMatcher matcher : requestMatchers) {
-//                    if (matcher.matches(request)) {
-//                        return false;
-//                    }
-//                }
-//                return true;
-//            }
-//        };
-//    }
+    private RequestMatcher csrfRequestMatcher() {
+        return new RequestMatcher() {
+            // Always allow the HTTP GET method
+            private final Pattern allowedMethods = Pattern.compile("^(GET|HEAD|OPTIONS|TRACE)$");
+
+            // Disable CSFR protection on the following urls:
+            private final AntPathRequestMatcher[] requestMatchers = { new AntPathRequestMatcher("/uaa/**") };
+
+            @Override
+            public boolean matches(HttpServletRequest request) {
+                if (allowedMethods.matcher(request.getMethod()).matches()) {
+                    return false;
+                }
+
+                for (AntPathRequestMatcher matcher : requestMatchers) {
+                    if (matcher.matches(request)) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+        };
+    }
 
     private static Filter csrfHeaderFilter() {
         return new OncePerRequestFilter() {
@@ -82,7 +82,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 if (csrf != null) {
                     Cookie cookie = new Cookie(CSRF_COOKIE_NAME, csrf.getToken());
                     cookie.setPath("/");
-                 //   cookie.setSecure(true);
+                    cookie.setSecure(true);
                     response.addCookie(cookie);
                 }
                 filterChain.doFilter(request, response);
