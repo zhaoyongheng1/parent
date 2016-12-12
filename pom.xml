@@ -21,6 +21,8 @@
         <module>wcbutil</module>
         <module>ui</module>
         <module>authserver</module>
+        <module>zipkinstreamserver</module>
+        <module>mq</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

@@ -4,6 +4,9 @@ server:
 spring:
   application:
     name: ui
+  sleuth:
+    sampler:
+      percentage: 1.0
   datasource:
     name: oauth
     url: jdbc:mysql://192.168.2.172:3306/waikuai
@@ -29,8 +32,12 @@ spring:
     host: 192.168.2.204
     prot: 6379
     password: foobared
-
-
+  rabbitmq:
+    host: 192.168.2.231
+    port: 5672
+    username: wcbtest
+    password: wcbtest
+    virtual-host: wcbtest
 security:
   #sessions: ALWAYS
   oauth2:
@@ -57,5 +64,6 @@ eureka:
       defaultZone: http://192.168.2.227:1111/eureka/,http://192.168.2.228:1111/eureka/,http://192.168.2.229:1111/eureka/
   instance:
     prefer-ip-address: true
+
 logging:
   config: classpath:log4j2.yml

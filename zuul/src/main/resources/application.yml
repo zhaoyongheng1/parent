@@ -3,6 +3,15 @@ spring:
     proxyTargetClass: true
   application:
     name: api-gateway
+  sleuth:
+    sampler:
+      percentage: 1.0
+  rabbitmq:
+    host: 192.168.2.231
+    port: 5672
+    username: wcbtest
+    password: wcbtest
+    virtual-host: wcbtest
 
 # Define the port where the API gateway server would be running
 server:
@@ -50,6 +59,7 @@ security:
 
 logging:
   config: classpath:log4j2.yml
+
 
 
 
