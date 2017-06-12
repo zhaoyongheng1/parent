@@ -1,0 +1,12 @@
+spring:
+  rabbitmq:
+    host: 192.168.2.231
+    port: 5672
+    username: wcb1
+    password: wcb1
+    virtual-host: wcb1
+    publisher-returns: true
+    publisher-confirms: true
+    cache:
+      channel:
+        size: 50

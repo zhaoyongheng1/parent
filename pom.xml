@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>cn.waicaibao</groupId>
+    <groupId>cn.com.myproject</groupId>
     <artifactId>parent</artifactId>
     <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>
@@ -17,24 +17,29 @@
         <module>turbine</module>
         <module>hystrixdashboard</module>
         <module>zuul</module>
-        <module>wcbuser</module>
-        <module>wcbutil</module>
+        <module>user</module>
+        <module>util</module>
         <module>ui</module>
         <module>authserver</module>
         <module>zipkinstreamserver</module>
         <module>mq</module>
+        <module>neteasevideo</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.4.2.RELEASE</version>
+        <version>1.5.3.RELEASE</version>
     </parent>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+    </properties>
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Camden.SR3</version>
+                <version>Dalston.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
