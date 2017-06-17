@@ -1,4 +1,4 @@
-package cn.waicaibao.security;
+package cn.com.myproject.security;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
