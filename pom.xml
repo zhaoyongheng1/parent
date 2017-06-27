@@ -24,6 +24,7 @@
         <module>zipkinstreamserver</module>
         <module>mq</module>
         <module>neteasevideo</module>
+        <module>admin</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
