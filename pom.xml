@@ -25,6 +25,7 @@
         <module>mq</module>
         <module>neteasevideo</module>
         <module>admin</module>
+        <module>api</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
