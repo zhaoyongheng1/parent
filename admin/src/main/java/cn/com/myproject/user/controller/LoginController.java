@@ -32,7 +32,6 @@ import java.util.ArrayList;
  * Created by liyang-macbook on 2017/6/17.
  */
 @Controller
-@RequestMapping("/third")
 public class LoginController {
 
     private static Logger logger = LoggerFactory.getLogger(LoginController.class);
@@ -44,7 +43,12 @@ public class LoginController {
     @Autowired
     private IRedisService redisService;
 
-    @RequestMapping("/loginname")
+    @RequestMapping("/tologin")
+    public String toLogin(){
+        return "login";
+    }
+
+    @RequestMapping("/third/loginname")
     public String login(String loginName,String password,Integer isRemember,HttpServletRequest request, HttpServletResponse response){
 
         UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken(loginName, password);
@@ -67,7 +71,7 @@ public class LoginController {
         return "";
     }
 
-    @RequestMapping("/qq/login")
+    @RequestMapping("/third/qq/login")
     public String qqLogin(HttpServletRequest request, HttpServletResponse response){
 
         response.setContentType("text/html;charset=utf-8");
@@ -85,7 +89,7 @@ public class LoginController {
     }
 
 
-    @RequestMapping("/qq/afterlogin")
+    @RequestMapping("/third/qq/afterlogin")
     public String qqAfterLogin(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
 

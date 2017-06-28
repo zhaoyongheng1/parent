@@ -17,12 +17,8 @@ public class IndexController {
     @Autowired
     private IUserService userService;
 
-    @RequestMapping("/")
-    public void index(HttpServletResponse response) throws IOException {
-        response.sendRedirect("/index");
-    }
 
-    @RequestMapping("/index")
+    @RequestMapping({"/index","/"})
     public String index(){
         return "index";
     }

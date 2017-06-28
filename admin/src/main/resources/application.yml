@@ -43,7 +43,7 @@ spring:
 server:
   port: 8888
   # Use different context-path to avoid session cookie overlapping
-  context-path: /
+  context-path: /admin/
 #  use-forward-headers: true
 
 

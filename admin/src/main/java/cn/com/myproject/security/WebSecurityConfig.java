@@ -48,7 +48,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.addFilterBefore(mySecurityFilter, FilterSecurityInterceptor.class)
                 .addFilterAt(myAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
-                .formLogin().loginPage("/login.html").successForwardUrl("/").loginProcessingUrl("/login")
+                .formLogin().loginPage("/tologin").successForwardUrl("/").loginProcessingUrl("/login")
                 .permitAll()
                 .and().rememberMe().rememberMeParameter("isRemember")
                // .rememberMeServices(services)

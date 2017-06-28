@@ -23,7 +23,7 @@ import java.io.IOException;
 @Component("mySecurityFilter")
 public class MySecurityFilter   extends AbstractSecurityInterceptor implements Filter {
 
-    private static Logger logger = LoggerFactory.getLogger(MySecurityFilter.class);
+    private static final Logger logger = LoggerFactory.getLogger(MySecurityFilter.class);
 
     @Autowired
     private CustomInvocationSecurityMetadataSourceService  mySecurityMetadataSource;
@@ -56,7 +56,9 @@ public class MySecurityFilter   extends AbstractSecurityInterceptor implements F
 
 
     public void invoke( FilterInvocation fi ) throws IOException, ServletException{
-        logger.debug("filter..........................");
+        if(logger.isDebugEnabled()){
+            logger.debug("filter..........................");
+        }
         InterceptorStatusToken token = super.beforeInvocation(fi);
         try{
             fi.getChain().doFilter(fi.getRequest(), fi.getResponse());
@@ -69,18 +71,25 @@ public class MySecurityFilter   extends AbstractSecurityInterceptor implements F
 
     @Override
     public SecurityMetadataSource obtainSecurityMetadataSource(){
-        logger.debug("obtainSecurityMetadataSource");
+        if(logger.isDebugEnabled()){
+            logger.debug("obtainSecurityMetadataSource");
+        }
         return this.mySecurityMetadataSource;
     }
 
     @Override
     public void destroy(){
-        logger.debug("filter===========================end");
+        if(logger.isDebugEnabled()){
+            logger.debug("filter===========================end");
+        }
     }
 
     @Override
     public void init( FilterConfig filterconfig ) throws ServletException{
-        logger.debug("filter===========================");
+
+        if(logger.isDebugEnabled()){
+            logger.debug("filter===========================");
+        }
     }
 
 }

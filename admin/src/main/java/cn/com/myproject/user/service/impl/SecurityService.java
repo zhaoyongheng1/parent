@@ -36,7 +36,7 @@ public class SecurityService implements ISecurityService {
 
     @PostConstruct
     public void init(){
-
+        //FIXME 由于角色权限提前缓存了，需要更改角色、权限时，更新缓存
         List<String> list = roleMapper.getAllUseRoleId();
 
         ConfigAttribute ca = null;
@@ -80,4 +80,5 @@ public class SecurityService implements ISecurityService {
             }
         }
     }
+
 }
