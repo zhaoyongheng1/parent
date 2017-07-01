@@ -11,6 +11,7 @@ public class User extends BasePO {
     @ApiModelProperty("登录名")
     private String loginName;
     private String userName;
+    private String nickName;
     private String phone;
     private String email;
     private String password;
@@ -18,6 +19,15 @@ public class User extends BasePO {
 
     private String realName;
     private String IDNum;
+
+    /**
+     * 网易IM账号ID
+     * */
+    private String accid;
+    /**
+     * 网易IM账号token
+     * */
+    private String accidToken;
 
     public String getUserId() {
         return userId;
@@ -33,6 +43,15 @@ public class User extends BasePO {
 
     public void setLoginName(String loginName) {
         this.loginName = loginName;
+    }
+
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
     }
 
     public String getUserName() {
@@ -73,5 +92,38 @@ public class User extends BasePO {
 
     public void setIDNum(String IDNum) {
         this.IDNum = IDNum;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getPayPassword() {
+        return payPassword;
+    }
+
+    public void setPayPassword(String payPassword) {
+        this.payPassword = payPassword;
+    }
+
+    public String getAccid() {
+        return accid;
+    }
+
+    public void setAccid(String accid) {
+        this.accid = accid;
+    }
+
+
+    public String getAccidToken() {
+        return accidToken;
+    }
+
+    public void setAccidToken(String accidToken) {
+        this.accidToken = accidToken;
     }
 }

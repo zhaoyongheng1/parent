@@ -24,22 +24,29 @@
     <resultMap type="User" id="resultMap">
         <id property="id" column="ID" jdbcType="INTEGER" />
         <result column="status" property="status" jdbcType="SMALLINT" />
-        <result column="createTime" property="create_time" jdbcType="BIGINT" />
+        <result column="create_time" property="createTime" jdbcType="BIGINT" />
         <result column="version" property="version" jdbcType="INTEGER" />
 
         <result column="user_id" property="userId" jdbcType="VARCHAR" />
         <result column="login_name" property="loginName" jdbcType="VARCHAR" />
         <result column="user_name" property="userName" jdbcType="VARCHAR" />
         <result column="password" property="password" jdbcType="VARCHAR" />
-
+        <result column="nick_name" property="nickName" jdbcType="VARCHAR" />
+        <result column="accid" property="accid" jdbcType="VARCHAR" />
+        <result column="accid_token" property="accidToken" jdbcType="VARCHAR" />
     </resultMap>
-
 
     <select id="selectById"  resultMap="resultMap" parameterType="java.lang.Integer">
 
     </select>
     <select id="selectByLoginName"  resultMap="resultMap" parameterType="java.lang.String">
-
+      select user_id,login_name,user_name,password,nick_name,status,create_time,version,accid,accid_token from user where login_name = #{value}
     </select>
-
+    <insert id="insert" parameterType="User" >
+      insert into user(user_id,login_name,user_name,nick_name,phone,email,password,pay_password,real_name,id_num,accid,accid_token,status,version,create_time)
+      VALUES (#{userId},#{loginName},#{userName},#{nickName},#{phone},#{email},#{password},#{payPassword},#{realName},#{IDNum},#{accid},#{accidToken},#{status},#{version},#{createTime})
+    </insert>
+    <update id="updateAccId">
+        update user set accid=#{accid},accid_token=#{accidToken} where login_name = #{loginName}
+    </update>
 </mapper>

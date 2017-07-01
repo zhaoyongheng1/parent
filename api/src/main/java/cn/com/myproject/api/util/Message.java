@@ -28,6 +28,14 @@ public class Message<T> implements Serializable {
     @ApiModelProperty("请求的返回数据对象，也将被转为json格式")
     private T data;
 
+    public Message() {
+
+    }
+
+    public Message(int result,String message) {
+        this.result = result;
+        this.message = message;
+    }
 
     public int getResult() {
         return result;
