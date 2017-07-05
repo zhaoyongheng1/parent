@@ -25,8 +25,8 @@ public class AccountServiceTest {
     @Test
     public void createTest() {
         IMCreateVO createVO = new IMCreateVO();
-        createVO.setAccid("honglan10091");
-        createVO.setName("honglan10091");
+        createVO.setAccid("honglan1009");
+        createVO.setName("honglan1009");
         ResultInfo vo =  accountService.create(createVO);
         Assert.assertEquals("状态码",vo.getCode()+"","200");
     }
@@ -43,7 +43,7 @@ public class AccountServiceTest {
     @Test
     public void refreshTokenTest(){
         IMRefreshTokenVO vo = new IMRefreshTokenVO();
-        vo.setAccid("honglan10091");
+        vo.setAccid("honglan1009");
         ResultInfo result = accountService.refreshToken(vo);
         Assert.assertEquals("状态码",result.getCode()+"","200");
     }

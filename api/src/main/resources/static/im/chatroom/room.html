@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title>聊天室</title>
 	<link rel="stylesheet" href="./dist/css/chartroom.css"/>
+	<link href="//nos.netease.com/vod163/nep.min.css" rel="stylesheet">
 </head>
 <body>
 	<div class="m-head">
@@ -32,7 +33,9 @@
 					</div>
 				</div>
 				<div class="media">
-					<img src="" id="video" class="hide">
+					<video id="my-video" class="video-js vjs-big-play-centered vjs-live" x-webkit-airplay="allow" webkit-playsinline controls poster="//nos.netease.com/vod163/poster.png" preload="auto" width="744" height="453" data-setup="{}">
+						<source src="//nos.netease.com/vod163/demo.mp4" type="video/mp4">
+					</video>
 				</div>
 			</div>
 			<div class="g-right">
@@ -83,5 +86,16 @@
 	<script src="./dist/js/emoji.js"></script>
 	<script src="./dist/js/link.js?v=5"></script>
 	<script src="./dist/js/room.js"></script>
+	<script src="//nos.netease.com/vod163/nep.min.js"></script>
+	<script>
+        neplayer('my-video').setDataSource([
+            {src:"http://flvf5716af4.live.126.net/live/917228e815144f548e20551066d28ac0.flv?netease=flvf5716af4.live.126.net",type:"video/x-flv"},
+            {src:"http://pullhlsf5716af4.live.126.net/live/917228e815144f548e20551066d28ac0/playlist.m3u8",type:"application/x-mpegURL"},
+            {src:"rtmp://vf5716af4.live.126.net/live/917228e815144f548e20551066d28ac0",type:"rtmp/flv "}
+		]);
+        neplayer("my-video", {}, function(){
+            // 当播放器初始化完成时运行的回调函数
+        });
+	</script>
 </body>
 </html>

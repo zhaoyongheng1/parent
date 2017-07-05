@@ -10,6 +10,7 @@ public class IMRequestAddrReturnVO implements Serializable {
 
     private Integer code;
     private List<String> addr;
+    private String desc;
 
 
     public Integer getCode() {
@@ -26,5 +27,13 @@ public class IMRequestAddrReturnVO implements Serializable {
 
     public void setAddr(List<String> addr) {
         this.addr = addr;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 }

@@ -25,7 +25,7 @@ public class IMChatroomServiceTest {
     @Test
     public void testCreate() {
         IMCreateVO vo = new IMCreateVO();
-        vo.setCreator("914c81f9f2ec481ab41b88050b7c9574");//honglan1009
+        vo.setCreator("honglan1009");//honglan1009
         vo.setName("myproject聊天室测试");
         vo.setAnnouncement("别乱BB,小心爆菊");
         ResultChatroom result = imChatroomService.create(vo);

@@ -12,7 +12,7 @@
     		url:'http://preapp.netease.im:8184'
         },
         online: {
-           appkey: 'b6ef7a173c2f9fb5ef43f2787984921c',
+           appkey: '45dded212ccce76835488e5ca320c063',
            url:'https://app.netease.im'
         }
     };

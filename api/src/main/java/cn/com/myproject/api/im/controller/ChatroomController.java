@@ -32,7 +32,7 @@ public class ChatroomController {
     public Message homeList(){
         //FIXME 为了测试
         IMGetVO vo = new IMGetVO();
-        vo.setRoomid(9691187l);
+        vo.setRoomid(9744027l);
         ResultChatroom room = imChatroomService.get(vo);
         if(room.getCode() == 200){
             Message message = MessageUtils.getSuccess("获取成功");
