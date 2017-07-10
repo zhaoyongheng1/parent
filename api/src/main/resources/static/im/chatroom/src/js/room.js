@@ -53,6 +53,7 @@ var page = {
 		this.$tab = $("#room .j-tab");
 		this.$pannel = $("#room .j-pannel");
 		this.$customBtn =$("#customBtn");
+        this.$zhuzi =$("#zhuzi");
 		this.$chat = $("#room .j-chat");
 		this.$member = $("#room .j-member");
 		this.$more = $("#room .j-more");
@@ -72,6 +73,7 @@ var page = {
 		});
 		this.$more.on("click",this.loadMoreMembers.bind(this));
 		this.$customBtn.on("click",this.showLaowang.bind(this));
+        this.$zhuzi.on("click",this.showZhuzi.bind(this));
 		this.$chat.delegate(".j-nick","click",this.showMenu.bind(this));
 		this.$menu.mouseleave(this.hideMenu.bind(this));
 		this.$menu.delegate(".j-item","click",this.dealCommand.bind(this));
@@ -147,6 +149,22 @@ var page = {
 			}
 		}.bind(this))
 	},
+	//发送竹子
+    showZhuzi:function(){
+        var content ={
+            type:2,
+            data:{
+                value:100
+            }
+        };
+        this.link.sendCustomMessage(content,function(err,data){
+            if(err){
+                alert(err.message);
+            }else{
+                this.buildChat([data],"msgs");
+            }
+        }.bind(this))
+    },
 	// 操作菜单
 	showMenu:function(evt){
 		var that = this,

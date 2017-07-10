@@ -1,17 +1,16 @@
-package cn.com.myproject.api.im.controller;
+package cn.com.myproject.api.live.controller;
 
 import cn.com.myproject.api.im.VO.ResultChatroom;
-import cn.com.myproject.api.im.VO.ResultData;
 import cn.com.myproject.api.im.VO.chatroom.IMGetVO;
 import cn.com.myproject.api.im.VO.chatroom.IMRequestAddrReturnVO;
 import cn.com.myproject.api.im.VO.chatroom.IMRequestAddrVO;
-import cn.com.myproject.api.im.VO.chatroom.IMTopnVO;
 import cn.com.myproject.api.im.service.IIMChatroomService;
+import cn.com.myproject.api.live.entity.PO.ChatRoom;
+import cn.com.myproject.api.live.service.IChatRoomService;
 import cn.com.myproject.api.util.Message;
 import cn.com.myproject.api.util.MessageUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -26,22 +25,19 @@ import java.util.List;
 public class ChatroomController {
 
     @Autowired
+    private IChatRoomService chatRoomService;
+
+    @Autowired
     private IIMChatroomService imChatroomService;
 
     @RequestMapping("/homeList")
     public Message homeList(){
-        //FIXME 为了测试
-        IMGetVO vo = new IMGetVO();
-        vo.setRoomid(9744027l);
-        ResultChatroom room = imChatroomService.get(vo);
-        if(room.getCode() == 200){
-            Message message = MessageUtils.getSuccess("获取成功");
-            List<LinkedHashMap<String,String>> list = new ArrayList<>();
-            list.add(room.getChatroom());
-            message.setData(list);
-            return message;
-        }
-        return MessageUtils.getFail("获取失败");
+
+        List<ChatRoom> list = chatRoomService.getList(1,12);
+        Message message = MessageUtils.getSuccess("获取成功");
+        message.setData(list);
+
+        return message;
     }
 
 

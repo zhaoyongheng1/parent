@@ -47,6 +47,7 @@ public class UserService implements IUserService {
         if(i == 1) {
             IMCreateVO vo = new IMCreateVO();
             vo.setAccid(UUID.randomUUID().toString().replace("-",""));
+            vo.setName(user.getNickName());
             ResultInfo result = accountService.create(vo);
             if(result.getCode() == 200) {
                 Map<String,String> map =  result.getInfo();

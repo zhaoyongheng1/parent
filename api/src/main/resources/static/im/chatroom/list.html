@@ -44,16 +44,16 @@
 						html ="";
 					for (var i = 0; i < list.length; i++) {
 						item = list[i];
-						if(item.onlineusercount == undefined){
-                            item.onlineusercount=10;
+						if(item.imOnlineusercount == undefined){
+                            item.imOnlineusercount=10;
 						}
-						if(item.onlineusercount > 10000){
-							var value = new Number(item.onlineusercount/10000);
+						if(item.imOnlineusercount > 10000){
+							var value = new Number(item.imOnlineusercount/10000);
 							total = value.toFixed(1)+"万";
 						}else{
-							total = item.onlineusercount;
+							total = item.imOnlineusercount;
 						}
-						html += ['<div class="item j-item" data-id="'+item.roomid+'">',
+						html += ['<div class="item j-item" data-id="'+item.imRoomid+'">',
 									'<div class="snapshot">',
 										'<img class="pic" src="./images/image'+i+'.png">',
 										'<div class="play">',
@@ -61,7 +61,7 @@
 										'</div>',
 									'</div>',
 									'<div class="title">',
-										'<a href="">'+item.name+'</a>',
+										'<a href="">'+item.roomName+'</a>',
 									'</div>',
 									'<div class="online">在线人数：<span>'+total+'人</span></div>',
 									'<div class="status">正在直播</div>',

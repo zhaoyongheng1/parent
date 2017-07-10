@@ -69,6 +69,7 @@
 
     <typeAliases>
         <package name="cn.com.myproject.api.user.entity"/>
+        <package name="cn.com.myproject.api.live.entity"/>
     </typeAliases>
 
     <!--<plugins>-->
@@ -103,6 +104,10 @@
 
 
     <mappers>
-        <mapper resource="mapper/UserMapper.xml"/>
+        <mapper resource="mapper/user/UserMapper.xml"/>
+
+        <mapper resource="mapper/live/ChatRoomMapper.xml"/>
+        <mapper resource="mapper/live/LiveRoomMapper.xml"/>
+        <mapper resource="mapper/live/LiveTypeMapper.xml"/>
     </mappers>
 </configuration>
