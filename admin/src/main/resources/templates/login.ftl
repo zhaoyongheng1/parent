@@ -9,29 +9,29 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
 		<!-- bootstrap & fontawesome -->
-		<link rel="stylesheet" href="${ctx}assets/css/bootstrap.min.css" />
-		<link rel="stylesheet" href="${ctx}assets/font-awesome/4.5.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="${ctx}/assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="${ctx}/assets/font-awesome/4.5.0/css/font-awesome.min.css" />
 
 		<!-- text fonts -->
-		<link rel="stylesheet" href="${ctx}assets/css/fonts.googleapis.com.css" />
+		<link rel="stylesheet" href="${ctx}/assets/css/fonts.googleapis.com.css" />
 
 		<!-- ace styles -->
-		<link rel="stylesheet" href="${ctx}assets/css/ace.min.css" />
+		<link rel="stylesheet" href="${ctx}/assets/css/ace.min.css" />
 
 		<!--[if lte IE 9]>
-			<link rel="stylesheet" href="${ctx}assets/css/ace-part2.min.css" />
+			<link rel="stylesheet" href="${ctx}/assets/css/ace-part2.min.css" />
 		<![endif]-->
-		<link rel="stylesheet" href="${ctx}assets/css/ace-rtl.min.css" />
+		<link rel="stylesheet" href="${ctx}/assets/css/ace-rtl.min.css" />
 
 		<!--[if lte IE 9]>
-		  <link rel="stylesheet" href="${ctx}assets/css/ace-ie.min.css" />
+		  <link rel="stylesheet" href="${ctx}/assets/css/ace-ie.min.css" />
 		<![endif]-->
 
 		<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
 
 		<!--[if lte IE 8]>
-		<script src="${ctx}assets/js/html5shiv.min.js"></script>
-		<script src="${ctx}assets/js/respond.min.js"></script>
+		<script src="${ctx}/assets/js/html5shiv.min.js"></script>
+		<script src="${ctx}/assets/js/respond.min.js"></script>
 		<![endif]-->
 	</head>
 
@@ -63,7 +63,7 @@
 
 											<div class="space-6"></div>
 
-											<form action="${ctx}login"  method="POST" >
+											<form action="${ctx}/login"  method="POST" >
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
@@ -282,15 +282,15 @@
 		<!-- basic scripts -->
 
 		<!--[if !IE]> -->
-		<script src="${ctx}assets/js/jquery-2.1.4.min.js"></script>
+		<script src="${ctx}/assets/js/jquery-2.1.4.min.js"></script>
 
 		<!-- <![endif]-->
 
 		<!--[if IE]>
-<script src="${ctx}assets/js/jquery-1.11.3.min.js"></script>
+<script src="${ctx}/assets/js/jquery-1.11.3.min.js"></script>
 <![endif]-->
 		<script type="text/javascript">
-			if('ontouchstart' in document.documentElement) document.write("<script src='${ctx}assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+			if('ontouchstart' in document.documentElement) document.write("<script src='${ctx}/assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
 		</script>
 
 		<!-- inline scripts related to this page -->
@@ -335,7 +335,7 @@
 
                 $('.btn-qq').on('click', function(e) {
 
-                    window.open("${ctx}third/qq/login","QQ登录",
+                    window.open("${ctx}/third/qq/login","QQ登录",
                         "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
                     e.preventDefault();
                 });

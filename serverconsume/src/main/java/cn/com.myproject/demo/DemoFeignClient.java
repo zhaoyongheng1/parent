@@ -1,4 +1,4 @@
-package cn.waicaibao.demo;
+package cn.com.myproject.demo;
 
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.stereotype.Service;

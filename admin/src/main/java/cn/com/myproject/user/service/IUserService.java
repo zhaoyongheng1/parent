@@ -2,6 +2,7 @@ package cn.com.myproject.user.service;
 
 import cn.com.myproject.user.entity.PO.SysUser;
 import cn.com.myproject.user.entity.VO.SysUserVO;
+import com.github.pagehelper.PageInfo;
 
 import java.util.List;
 
@@ -12,4 +13,6 @@ public interface IUserService {
     SysUserVO getByLoginName(String loginName);
 
     List<SysUser> getAll();
+
+    PageInfo<SysUserVO> getPage(int pageNum,int pageSize);
 }

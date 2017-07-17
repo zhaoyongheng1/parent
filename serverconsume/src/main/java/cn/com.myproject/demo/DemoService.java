@@ -1,4 +1,4 @@
-package cn.waicaibao.demo;
+package cn.com.myproject.demo;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;

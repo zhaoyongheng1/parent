@@ -52,19 +52,53 @@
 <!-- page specific plugin scripts -->
 
 <!--[if lte IE 8]>
-  <script src="${ctx}/assets/js/excanvas.min.js"></script>
+<script src="${ctx}/assets/js/excanvas.min.js"></script>
 <![endif]-->
-<script src="${ctx}/assets/js/jquery-ui.custom.min.js"></script>
-<script src="${ctx}/assets/js/jquery.ui.touch-punch.min.js"></script>
-<script src="${ctx}/assets/js/jquery.easypiechart.min.js"></script>
-<script src="${ctx}/assets/js/jquery.sparkline.index.min.js"></script>
-<script src="${ctx}/assets/js/jquery.flot.min.js"></script>
-<script src="${ctx}/assets/js/jquery.flot.pie.min.js"></script>
-<script src="${ctx}/assets/js/jquery.flot.resize.min.js"></script>
+
 
 <!-- ace scripts -->
 <script src="${ctx}/assets/js/ace-elements.min.js"></script>
 <script src="${ctx}/assets/js/ace.min.js"></script>
 
-</body>
-</html>
+<script>
+    function createMenu(data) {
+        var v = "";
+
+        $.each(data,function(i,n) {
+
+            if(n.childs) {
+                v += '<li class="'+n.active+' '+n.open+'"><a href="#" class="dropdown-toggle" ><i class="menu-icon fa ';
+                v += n.icon;
+                v += '"></i> <span class="menu-text">'+n.name+'</span> ';
+                v += '<b class="arrow fa fa-angle-down"></b>';
+                v += '</a> <b class="arrow"></b> ';
+                v += '<ul class="submenu">';
+                v += createMenu(n.childs);
+                v += '</ul></li>';
+            }else {
+                v += '<li class="'+n.active+' '+n.open+'"> <a href="${ctx}'+n.url+'"><i class="menu-icon fa '+n.icon+'"></i> <span class="menu-text">'+n.name+'</span> ';
+                v += '</a> <b class="arrow"></b></li>';
+            }
+
+        });
+        return v;
+    }
+
+    $.ajax({
+        url: "${ctx}/menu/get",
+        data: {'menuId':'${menuId}'},
+        cache:true,
+        success: function(data){
+            if(data.result == 1) {
+                $("#menu").html(createMenu(data.data));
+            }else {
+                window.location.href = "${ctx}/login";
+            }
+
+        },
+        error: function(data){
+            alert("获取菜单失败");
+        }
+    });
+</script>
+

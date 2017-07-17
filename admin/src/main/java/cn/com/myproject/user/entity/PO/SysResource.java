@@ -19,6 +19,8 @@ public class SysResource extends BasePO {
 
     private String parentId;
 
+    private String icon;
+
 
     public String getResourceId() {
         return resourceId;
@@ -59,5 +61,13 @@ public class SysResource extends BasePO {
 
     public void setParentId(String parentId) {
         this.parentId = parentId;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
     }
 }

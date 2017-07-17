@@ -58,8 +58,8 @@ public class LoginController {
             Authentication authentication = myAuthenticationManager.authenticate(authRequest); //调用loadUserByUsername
             SecurityContextHolder.getContext().setAuthentication(authentication);
             HttpSession session = request.getSession();
-            session.setAttribute("SPRING_SECURITY_CONTEXT", SecurityContextHolder.getContext()); // 这个非常重要，否则验证后将无法登陆
 
+            session.setAttribute("SPRING_SECURITY_CONTEXT", SecurityContextHolder.getContext()); // 这个非常重要，否则验证后将无法登陆
 
             response.sendRedirect("/index.html");
 

@@ -39,6 +39,6 @@ public class MyUserDetailService implements UserDetailsService {
                 authorities.add(authority);
             }
         }
-        return new User(loginName, user.getPassword(), authorities);
+        return new SecurityUser(user.getUserId(),loginName, user.getPassword(), authorities);
     }
 }

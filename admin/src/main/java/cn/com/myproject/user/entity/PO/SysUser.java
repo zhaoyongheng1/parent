@@ -13,6 +13,7 @@ public class SysUser extends BasePO {
     private String password;
     private String phone;
 
+
     public String getUserId() {
         return userId;
     }

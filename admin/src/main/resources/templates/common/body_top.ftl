@@ -1,47 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-		<meta charset="utf-8" />
-		<title>${title}</title>
-
-		<meta name="description" content="overview &amp; stats" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-
-		<!-- bootstrap & fontawesome -->
-		<link rel="stylesheet" href="${ctx}/assets/css/bootstrap.min.css" />
-		<link rel="stylesheet" href="${ctx}/assets/font-awesome/4.5.0/css/font-awesome.min.css" />
-
-		<!-- page specific plugin styles -->
-
-		<!-- text fonts -->
-		<link rel="stylesheet" href="${ctx}/assets/css/fonts.googleapis.com.css" />
-
-		<!-- ace styles -->
-		<link rel="stylesheet" href="${ctx}/assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
-
-		<!--[if lte IE 9]>
-			<link rel="stylesheet" href="${ctx}/assets/css/ace-part2.min.css" class="ace-main-stylesheet" />
-		<![endif]-->
-		<link rel="stylesheet" href="${ctx}/assets/css/ace-skins.min.css" />
-		<link rel="stylesheet" href="${ctx}/assets/css/ace-rtl.min.css" />
-
-		<!--[if lte IE 9]>
-		  <link rel="stylesheet" href="${ctx}/assets/css/ace-ie.min.css" />
-		<![endif]-->
-
-		<!-- inline styles related to this page -->
-
-		<!-- ace settings handler -->
-		<script src="${ctx}/assets/js/ace-extra.min.js"></script>
-
-		<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
-
-		<!--[if lte IE 8]>
-		<script src="${ctx}/assets/js/html5shiv.min.js"></script>
-		<script src="${ctx}/assets/js/respond.min.js"></script>
-		<![endif]-->
-	</head>
 
 	<body class="no-skin">
 		<div id="navbar" class="navbar navbar-default          ace-save-state">
@@ -71,7 +27,7 @@
 
 						<li class="light-blue dropdown-modal">
 							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
-								<img class="nav-user-photo" src="${ctx}assets/images/avatars/user.jpg" alt="Jason's Photo" />
+								<img class="nav-user-photo" src="${ctx}/assets/images/avatars/user.jpg" alt="Jason's Photo" />
 								<span class="user-info">
 									<small>Welcome,</small>
 									hl
@@ -98,7 +54,7 @@
 								<li class="divider"></li>
 
 								<li>
-									<a href="${ctx}logout">
+									<a href="${ctx}/logout">
 										<i class="ace-icon fa fa-power-off"></i>
 										登出
 									</a>
@@ -150,60 +106,8 @@
 					</div>
 				</div><!-- /.sidebar-shortcuts -->
 
-				<ul class="nav nav-list">
-					<li class="active">
-						<a href="index.html">
-							<i class="menu-icon fa fa-tachometer"></i>
-							<span class="menu-text"> 首页 </span>
-						</a>
+				<ul class="nav nav-list" id="menu">
 
-						<b class="arrow"></b>
-					</li>
-
-					<li class="">
-						<a href="#" class="dropdown-toggle">
-							<i class="menu-icon fa fa-desktop"></i>
-							<span class="menu-text">
-								系统管理
-							</span>
-
-							<b class="arrow fa fa-angle-down"></b>
-						</a>
-
-						<b class="arrow"></b>
-
-						<ul class="submenu">
-
-
-							<li class="">
-								<a href="${ctx}/sysuser/">
-									<i class="menu-icon fa fa-caret-right"></i>
-									用户管理
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="elements.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									角色管理
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="buttons.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									权限管理
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-						</ul>
-					</li>
 
 				</ul><!-- /.nav-list -->
 

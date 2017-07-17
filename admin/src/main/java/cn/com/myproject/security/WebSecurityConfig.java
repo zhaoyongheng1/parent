@@ -43,7 +43,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         //FIXME remember需要存储到redis中
        // TokenBasedRememberMeServices services = new TokenBasedRememberMeServices("myproject",rememberUserDetailService);
 
-        http.authorizeRequests().antMatchers("/assets/**","/third/**","/error","/").permitAll().anyRequest().authenticated();
+        http.authorizeRequests().antMatchers("/assets/**","/third/**","/error","/menu/get").permitAll().anyRequest().authenticated();
 
 
         http.addFilterBefore(mySecurityFilter, FilterSecurityInterceptor.class)

@@ -1,4 +1,4 @@
-package cn.waicaibao.main;
+package cn.com.myproject.main;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,8 +11,8 @@ import org.springframework.web.client.RestTemplate;
 
 @EnableDiscoveryClient
 @EnableHystrix
-@SpringBootApplication(scanBasePackages = "cn.waicaibao")
-@EnableFeignClients(basePackages = "cn.waicaibao")
+@SpringBootApplication(scanBasePackages = "cn.com.myproject")
+@EnableFeignClients(basePackages = "cn.com.myproject")
 public class ServerConsumeApplication {
 
 	@Bean
