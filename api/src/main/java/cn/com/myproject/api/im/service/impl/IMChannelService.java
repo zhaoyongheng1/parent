@@ -149,7 +149,7 @@ public class IMChannelService implements IIMChannelService {
     @Override
     public ResultChannel merge(IMMergeVO vo){
         HttpEntity<IMMergeVO> formEntity = new HttpEntity<>(vo , IMHttpHeaders.getJSON());
-        ResponseEntity<ResultChannel> entity = restTemplate.postForEntity(SETSIGNKEY_URL,formEntity,  ResultChannel.class);
+        ResponseEntity<ResultChannel> entity = restTemplate.postForEntity(MERGE_URL,formEntity,  ResultChannel.class);
         return entity.getBody();
     }
 

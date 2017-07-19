@@ -10,11 +10,11 @@ import java.util.Date;
  * Created by liyang-macbook on 2017/6/29.
  */
 public class IMHttpHeaders {
-    private static final String APPKEY = "45dded212ccce76835488e5ca320c063";
+    private static final String APPKEY = "b6ef7a173c2f9fb5ef43f2787984921c";
 
-    private static final String APPSECRET = "311cc53a114d";
+    private static final String APPSECRET = "b63a571e5494";
 
-    public static HttpHeaders get(){
+    public static HttpHeaders get() {
 
         String nonce =  "myproject";
         String curTime = String.valueOf((new Date()).getTime() / 1000L);
@@ -30,8 +30,8 @@ public class IMHttpHeaders {
         return headers;
     }
 
-    public static HttpHeaders getJSON(){
-        String nonce =  "myproject.com";
+    public static HttpHeaders getJSON() {
+        String nonce =  "myproject.com.cn";
         String curTime = String.valueOf((new Date()).getTime() / 1000L);
         String checkSum = CheckSumBuilder.getCheckSum(APPSECRET, nonce ,curTime);//参考 计算CheckSum的java代码
 
@@ -41,6 +41,14 @@ public class IMHttpHeaders {
         headers.set("Nonce", nonce);
         headers.set("CurTime", curTime);
         headers.set("CheckSum", checkSum);
+
+        return headers;
+    }
+
+    public static HttpHeaders getUpload(String x_nos_token) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("x-nos-token",x_nos_token);
+        headers.setContentType(MediaType.valueOf(MediaType.APPLICATION_OCTET_STREAM_VALUE));
 
         return headers;
     }
