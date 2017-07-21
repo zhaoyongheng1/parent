@@ -36,6 +36,9 @@ public class LiveRoom extends BasePO {
     private Short liveType;
 
 
+    private String userId;
+
+
     public String getRoomId() {
         return roomId;
     }
@@ -114,5 +117,13 @@ public class LiveRoom extends BasePO {
 
     public void setLiveType(Short liveType) {
         this.liveType = liveType;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }

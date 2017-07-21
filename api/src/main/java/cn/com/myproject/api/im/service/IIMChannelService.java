@@ -369,4 +369,15 @@ public interface IIMChannelService {
      *
      * */
     ResultChannel merge(IMMergeVO vo);
+
+    /**
+     *  语音视频通话
+     *
+     *  获取语音视频安全认证签名
+     *
+     *  @return
+     *
+     *
+     * */
+    GetTokenReturnVO getToken(GetTokenVO vo);
 }

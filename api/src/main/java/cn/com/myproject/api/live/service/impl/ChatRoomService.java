@@ -52,7 +52,7 @@ public class ChatRoomService implements IChatRoomService {
         vo.setAnnouncement(roomRemark);
         ResultChatroom resultChatroom = imChatroomService.create(vo);
         if(resultChatroom.getCode() != 200) {
-            throw new RuntimeException("调用网易创建聊天室接口失败");
+            throw new RuntimeException("调用网易创建聊天室接口失败,"+resultChatroom.getCode()+","+resultChatroom.getDesc());
         }
 
         //3、更新数据

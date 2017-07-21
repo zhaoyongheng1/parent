@@ -39,7 +39,7 @@ public class UserService implements IUserService {
         user.setVersion(1);
         user.setCreateTime(Calendar.getInstance().getTimeInMillis());
         user.setStatus(UserStatus.S_1.getId());
-        user.setUserId(UUID.randomUUID().toString());
+        user.setUserId(UUID.randomUUID().toString().replace("-",""));
         user.setPassword(DigestUtils.md5Hex(user.getPassword()));
 
         int i = userMapper.insert(user);

@@ -11,4 +11,7 @@ import java.util.List;
 @Mapper
 public interface LiveRoomMapper {
     List<LiveRoom> getList();
+    int insert(LiveRoom room);
+    int update(LiveRoom room);
+
 }

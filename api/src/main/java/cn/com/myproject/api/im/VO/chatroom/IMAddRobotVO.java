@@ -16,6 +16,7 @@ public class IMAddRobotVO implements Serializable {
 
     /***
      * 聊天室id
+     * 必填：是
      */
     private Long roomid;
     /**
@@ -23,14 +24,20 @@ public class IMAddRobotVO implements Serializable {
      * JSONArray
      *
      *["zhangsan","lisi"]
+     *
+     * 必填：是
      * */
     private String accids;
     /**
      *机器人信息扩展字段，请使用json格式，长度4096字符
+     *
+     * 必填：否
      * */
     private String roleExt;
     /***
      * 机器人进入聊天室通知的扩展字段，请使用json格式，长度2048字符
+     *
+     * 必填：否
      */
     private String notifyExt;
 

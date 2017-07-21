@@ -2,17 +2,21 @@ package cn.com.myproject.api.im.service;
 
 import cn.com.myproject.api.im.VO.ResultChatroom;
 import cn.com.myproject.api.im.VO.ResultData;
-import cn.com.myproject.api.im.VO.chatroom.IMCreateVO;
-import cn.com.myproject.api.im.VO.chatroom.IMRequestAddrReturnVO;
-import cn.com.myproject.api.im.VO.chatroom.IMRequestAddrVO;
-import cn.com.myproject.api.im.VO.chatroom.IMTopnVO;
+import cn.com.myproject.api.im.VO.chatroom.*;
 import cn.com.myproject.api.im.service.impl.IMChatroomService;
+import cn.com.myproject.api.live.entity.PO.Robot;
+import cn.com.myproject.api.live.service.IRobotService;
+import com.alibaba.fastjson.JSON;
+import com.github.pagehelper.PageInfo;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by liyang-macbook on 2017/7/1.
@@ -23,6 +27,9 @@ public class IMChatroomServiceTest {
 
     @Autowired
     private IIMChatroomService imChatroomService;
+
+    @Autowired
+    private IRobotService robotService;
 
     @Test
     public void testCreate() {
@@ -48,5 +55,38 @@ public class IMChatroomServiceTest {
         IMRequestAddrReturnVO result = imChatroomService.requestAddr(vo);
         Assert.assertEquals("状态码",result.getCode()+"","200");
     }
+
+    @Test
+    public void testaddRobot() {
+        IMAddRobotVO vo = new IMAddRobotVO();
+        vo.setRoomid(10035164l);
+        List<String> list = new ArrayList<>();
+        PageInfo<Robot> info =  robotService.getPage(1,100);
+        if(null != info && null != info.getList()) {
+            for(Robot robot:info.getList()) {
+                list.add(robot.getAccid());
+            }
+        }
+
+        vo.setAccids(JSON.toJSONString(list));
+        imChatroomService.addRobot(vo);
+    }
+
+    @Test
+    public void testRemoveRobot() {
+        IMAddRobotVO vo = new IMAddRobotVO();
+        vo.setRoomid(10035164l);
+        List<String> list = new ArrayList<>();
+        PageInfo<Robot> info =  robotService.getPage(1,100);
+        if(null != info && null != info.getList()) {
+            for(Robot robot:info.getList()) {
+                list.add(robot.getAccid());
+            }
+        }
+
+        vo.setAccids(JSON.toJSONString(list));
+        imChatroomService.removeRobot(vo);
+    }
+
 
  }

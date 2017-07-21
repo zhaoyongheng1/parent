@@ -35,9 +35,21 @@
         <result column="httppullurl" property="httppullurl" jdbcType="VARCHAR" />
         <result column="hlspullurl" property="hlspullurl" jdbcType="VARCHAR" />
         <result column="rtmppullurl" property="rtmppullurl" jdbcType="VARCHAR" />
-
+        <result column="live_name" property="liveName" jdbcType="VARCHAR" />
+        <result column="live_type" property="liveType" jdbcType="SMALLINT" />
+        <result column="user_id" property="userId" jdbcType="VARCHAR" />
     </resultMap>
     <select id="getList"  resultMap="resultMap">
         select id,status,create_time,version,room_id,room_name,pushurl,httppullurl,hlspullurl,rtmppullurl from live_room
     </select>
+    <insert id="insert" parameterType="LiveRoom">
+      insert into live_room(room_id,room_name,create_time,version,status,user_id)
+      values
+      (#{roomId},#{roomName},#{createTime},#{version},#{status},#{userId})
+    </insert>
+    <update id="update" parameterType="LiveRoom">
+        update live_room set cid=#{cid},ctime=#{ctime},pushurl=#{pushurl},httppullurl=#{httppullurl},hlspullurl=#{hlspullurl},
+        rtmppullurl=#{rtmppullurl},live_name=#{liveName},live_type=#{liveType}
+        where user_id = #{userId}
+    </update>
 </mapper>

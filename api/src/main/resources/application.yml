@@ -38,6 +38,8 @@ spring:
     expose-session-attributes: false
     expose-spring-macro-helpers: false
     prefer-file-system-access: true
+  autoconfigure:
+    exclude: #org.springframework.boot.actuate.autoconfigure.MetricExportAutoConfiguration
 
 # Define the port where the UAA server would be running
 server:
@@ -62,7 +64,6 @@ logging:
 
 pagehelper:
   params: pageNum=pageNumKey;pageSize=pageSizeKey;
-
 
 
 

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 /**
@@ -14,6 +15,7 @@ import org.springframework.web.client.RestTemplate;
  */
 @Service
 public class IMChannelService implements IIMChannelService {
+
     private static final String CREATE_URL = "https://vcloud.163.com/app/channel/create";
     private static final String UPDATE_URL = "https://vcloud.163.com/app/channel/update";
     private static final String DELETE_URL = "https://vcloud.163.com/app/channel/delete";
@@ -30,6 +32,7 @@ public class IMChannelService implements IIMChannelService {
     private static final String SETCALLBACK_URL = "https://vcloud.163.com/app/record/setcallback";
     private static final String SETSIGNKEY_URL = "https://vcloud.163.com/app/callback/setSignKey";
     private static final String MERGE_URL = "https://vcloud.163.com/app/video/merge";
+    private static final String GETTOKEN_URL = "https://api.netease.im/nimserver/user/getToken.action";
 
     @Autowired
     private RestTemplate restTemplate;
@@ -150,6 +153,13 @@ public class IMChannelService implements IIMChannelService {
     public ResultChannel merge(IMMergeVO vo){
         HttpEntity<IMMergeVO> formEntity = new HttpEntity<>(vo , IMHttpHeaders.getJSON());
         ResponseEntity<ResultChannel> entity = restTemplate.postForEntity(MERGE_URL,formEntity,  ResultChannel.class);
+        return entity.getBody();
+    }
+
+    @Override
+    public GetTokenReturnVO getToken(GetTokenVO vo) {
+        HttpEntity<MultiValueMap<String,String>> formEntity = new HttpEntity<>(vo.toMap() , IMHttpHeaders.get());
+        ResponseEntity<GetTokenReturnVO> entity = restTemplate.postForEntity(GETTOKEN_URL,formEntity,  GetTokenReturnVO.class);
         return entity.getBody();
     }
 

@@ -956,6 +956,7 @@ NetcallBridge.fn.doCalling = function (type) {
             pushPayload: '',
             sound: ''
         },
+        webrtcEnable: true,
         sessionConfig: this.sessionConfig
     }).then(function (obj) {
         this.log("发起通话成功，等待对方接听");

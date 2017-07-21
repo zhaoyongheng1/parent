@@ -20,7 +20,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.com.myproject.api.live.mapper.ChatRoomMapper">
-    <cache type="org.mybatis.caches.redis.RedisCache" />
+    <!--<cache type="org.mybatis.caches.redis.RedisCache" />-->
     <resultMap type="ChatRoom" id="resultMap">
         <id property="id" column="ID" jdbcType="INTEGER" />
         <result column="status" property="status" jdbcType="SMALLINT" />
