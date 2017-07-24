@@ -1,4 +1,4 @@
-package cn.com.myproject.api;
+package cn.com.myproject;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;

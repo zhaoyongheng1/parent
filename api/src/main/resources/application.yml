@@ -65,6 +65,13 @@ logging:
 pagehelper:
   params: pageNum=pageNumKey;pageSize=pageSizeKey;
 
+aliyun:
+  oss:
+    endpoint: oss-cn-hangzhou.aliyuncs.com
+    access-key-secret: mAYn0GtMRUWPJX4NFRTie2IztgrC8r
+    access-key-id: LTAIoNYCQixwQrRo
+    bucket-name: dh-demo
+
 
 
 
