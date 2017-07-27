@@ -1,7 +1,6 @@
 package cn.com.myproject.security;
 
-import cn.com.myproject.reids.IRedisService;
-import cn.com.myproject.user.service.impl.SecurityService;
+import cn.com.myproject.redis.IRedisService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +51,7 @@ public class CustomPermissionEvaluator implements PermissionEvaluator {
         if(null==auth || auth.isEmpty()){
             return false;
         }
-        List<String> resouces = (List<String>) redisService.getHashValue(SecurityService.METHOD_SECURITY_KEY,permission);
+        List<String> resouces = (List<String>) redisService.getHashValue(WebSecurityConfig.METHOD_SECURITY_KEY,permission);
         if( resouces == null || resouces.isEmpty() ) {
             return false;
         }

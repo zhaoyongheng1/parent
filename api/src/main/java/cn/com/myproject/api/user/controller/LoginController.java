@@ -1,24 +1,21 @@
 package cn.com.myproject.api.user.controller;
 
-import cn.com.myproject.api.user.entity.Constant;
-import cn.com.myproject.api.user.entity.PO.User;
-import cn.com.myproject.api.user.service.IUserService;
+
+import cn.com.myproject.api.service.IUserService;
 import cn.com.myproject.api.util.Message;
 import cn.com.myproject.api.util.MessageUtils;
+import cn.com.myproject.user.entity.Constant;
+import cn.com.myproject.user.entity.PO.User;
 import io.swagger.annotations.*;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.session.FindByIndexNameSessionRepository;
 import org.springframework.session.Session;
-import org.springframework.session.SessionRepository;
-import org.springframework.session.data.redis.RedisOperationsSessionRepository;
-import org.springframework.session.web.http.HttpSessionManager;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Map;
 

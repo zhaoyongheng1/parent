@@ -26,6 +26,11 @@ import javax.servlet.Filter;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    public static final String URL_SECURITY_KEY = "url_security";
+
+    public static final String METHOD_SECURITY_KEY = "method_security";
+
+
     @Autowired
     private AuthenticationProvider myAuthenticationProvider;
 

@@ -1,13 +1,13 @@
 package cn.com.myproject.api.live.controller;
 
-import cn.com.myproject.api.im.VO.ResultChatroomDesc;
-import cn.com.myproject.api.im.VO.chatroom.IMSendMsgVO;
-import cn.com.myproject.api.im.service.IIMChatroomService;
-import cn.com.myproject.api.live.service.IChatRoomService;
-import cn.com.myproject.api.user.entity.Constant;
-import cn.com.myproject.api.user.entity.PO.User;
+
+import cn.com.myproject.api.service.IChatRoomService;
 import cn.com.myproject.api.util.Message;
 import cn.com.myproject.api.util.MessageUtils;
+import cn.com.myproject.netease.VO.ResultChatroomDesc;
+import cn.com.myproject.netease.VO.chatroom.IMSendMsgVO;
+import cn.com.myproject.user.entity.Constant;
+import cn.com.myproject.user.entity.PO.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,7 +23,7 @@ import java.util.UUID;
 public class GiftController  {
 
     @Autowired
-    private IIMChatroomService imChatroomService;
+    private IChatRoomService chatRoomService;
 
     /**
      * 发送礼物
@@ -36,15 +36,15 @@ public class GiftController  {
         //FIXME 逻辑处理、扣钱、记录、日志
 
 
-        User user = (User) httpSession.getAttribute(Constant.SESSION_USER);
-        //发送自定义消息
-        IMSendMsgVO vo = new IMSendMsgVO();
-        vo.setRoomid(roomId);
-        vo.setMsgId(UUID.randomUUID().toString().replace("-",""));
-        vo.setMsgType(100);
-        vo.setFromAccid(user.getAccid());
-        vo.setAttach("{\"type\":2,\"data\":{\"value\":100}}");
-        ResultChatroomDesc result = imChatroomService.sendMsg(vo);
+//        User user = (User) httpSession.getAttribute(Constant.SESSION_USER);
+//        //发送自定义消息
+//        IMSendMsgVO vo = new IMSendMsgVO();
+//        vo.setRoomid(roomId);
+//        vo.setMsgId(UUID.randomUUID().toString().replace("-",""));
+//        vo.setMsgType(100);
+//        vo.setFromAccid(user.getAccid());
+//        vo.setAttach("{\"type\":2,\"data\":{\"value\":100}}");
+//        ResultChatroomDesc result = chatRoomService.sendMsg(vo);
         Message message = MessageUtils.getSuccess("获取成功");
         return message;
     }

@@ -1,7 +1,7 @@
 package cn.com.myproject.security;
 
-import cn.com.myproject.user.entity.VO.SysUserVO;
-import cn.com.myproject.user.service.IUserService;
+import cn.com.myproject.service.ISysUserService;
+import cn.com.myproject.sysuser.entity.VO.SysUserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -21,7 +21,7 @@ import java.util.Collection;
 public class MyUserDetailService implements UserDetailsService {
 
     @Autowired
-    private IUserService userService;
+    private ISysUserService userService;
 
     @Override
     public UserDetails loadUserByUsername(String loginName) throws UsernameNotFoundException {

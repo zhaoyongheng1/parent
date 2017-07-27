@@ -1,7 +1,7 @@
 package cn.com.myproject.security;
 
-import cn.com.myproject.reids.IRedisService;
-import cn.com.myproject.user.service.impl.SecurityService;
+
+import cn.com.myproject.redis.IRedisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.web.FilterInvocation;
@@ -27,12 +27,12 @@ public class CustomInvocationSecurityMetadataSourceService implements FilterInvo
     @Override
     public Collection<ConfigAttribute> getAttributes(Object object) throws IllegalArgumentException {
         FilterInvocation filterInvocation = (FilterInvocation) object;
-        Set<Object> set = redisService.getKey(SecurityService.URL_SECURITY_KEY);
+        Set<Object> set = redisService.getKey(WebSecurityConfig.URL_SECURITY_KEY);
 
         for(Object key : set) {
             RequestMatcher requestMatcher = new AntPathRequestMatcher(key.toString());
             if(requestMatcher.matches(filterInvocation.getHttpRequest())) {
-                return (Collection<ConfigAttribute>) redisService.getHashValue(SecurityService.URL_SECURITY_KEY,key.toString());
+                return (Collection<ConfigAttribute>) redisService.getHashValue(WebSecurityConfig.URL_SECURITY_KEY,key.toString());
             }
         }
 

@@ -1,8 +1,9 @@
 package cn.com.myproject.security;
 
-import cn.com.myproject.reids.IRedisService;
-import cn.com.myproject.user.entity.VO.SysUserVO;
-import cn.com.myproject.user.service.IUserService;
+
+import cn.com.myproject.redis.IRedisService;
+import cn.com.myproject.service.ISysUserService;
+import cn.com.myproject.sysuser.entity.VO.SysUserVO;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -23,7 +24,7 @@ import java.util.Collection;
 public class RememberUserDetailService implements UserDetailsService {
 
     @Autowired
-    private IUserService userService;
+    private ISysUserService sysUserService;
 
     @Autowired
     private IRedisService redisService;
@@ -38,7 +39,7 @@ public class RememberUserDetailService implements UserDetailsService {
 
         Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 
-        SysUserVO user = userService.getByLoginName(loginName);
+        SysUserVO user = sysUserService.getByLoginName(loginName);
         if (user == null) {
             throw new UsernameNotFoundException("UserName " + loginName + " not found");
         }

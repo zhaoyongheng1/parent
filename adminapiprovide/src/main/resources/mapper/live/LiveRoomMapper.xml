@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+
+       Copyright 2015-2016 the original author or authors.
+
+       Licensed under the Apache License, Version 2.0 (the "License");
+       you may not use this file except in compliance with the License.
+       You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+       Unless required by applicable law or agreed to in writing, software
+       distributed under the License is distributed on an "AS IS" BASIS,
+       WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+       See the License for the specific language governing permissions and
+       limitations under the License.
+
+-->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.myproject.live.mapper.LiveRoomMapper">
+    <cache type="org.mybatis.caches.redis.RedisCache" />
+    <resultMap type="LiveRoom" id="resultMap">
+        <id property="id" column="ID" jdbcType="INTEGER" />
+        <result column="status" property="status" jdbcType="SMALLINT" />
+        <result column="create_time" property="createTime" jdbcType="BIGINT" />
+        <result column="version" property="version" jdbcType="INTEGER" />
+
+        <result column="room_id" property="roomId" jdbcType="VARCHAR" />
+        <result column="room_name" property="roomName" jdbcType="VARCHAR" />
+        <result column="cid" property="cid" jdbcType="VARCHAR" />
+        <result column="ctime" property="ctime" jdbcType="BIGINT" />
+        <result column="pushurl" property="pushurl" jdbcType="VARCHAR" />
+        <result column="httppullurl" property="httppullurl" jdbcType="VARCHAR" />
+        <result column="hlspullurl" property="hlspullurl" jdbcType="VARCHAR" />
+        <result column="rtmppullurl" property="rtmppullurl" jdbcType="VARCHAR" />
+        <result column="live_name" property="liveName" jdbcType="VARCHAR" />
+        <result column="live_type" property="liveType" jdbcType="SMALLINT" />
+        <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    </resultMap>
+    <select id="getList"  resultMap="resultMap">
+        select id,status,create_time,version,room_id,room_name,pushurl,httppullurl,hlspullurl,rtmppullurl from live_room
+    </select>
+    <insert id="insert" parameterType="LiveRoom">
+      insert into live_room(room_id,room_name,create_time,version,status,user_id)
+      values
+      (#{roomId},#{roomName},#{createTime},#{version},#{status},#{userId})
+    </insert>
+    <update id="update" parameterType="LiveRoom">
+        update live_room set cid=#{cid},ctime=#{ctime},pushurl=#{pushurl},httppullurl=#{httppullurl},hlspullurl=#{hlspullurl},
+        rtmppullurl=#{rtmppullurl},live_name=#{liveName},live_type=#{liveType}
+        where user_id = #{userId}
+    </update>
+</mapper>

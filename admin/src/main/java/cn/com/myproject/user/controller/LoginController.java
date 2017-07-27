@@ -1,6 +1,6 @@
 package cn.com.myproject.user.controller;
 
-import cn.com.myproject.reids.IRedisService;
+import cn.com.myproject.redis.IRedisService;
 import com.qq.connect.QQConnectException;
 import com.qq.connect.api.OpenID;
 import com.qq.connect.api.qzone.PageFans;

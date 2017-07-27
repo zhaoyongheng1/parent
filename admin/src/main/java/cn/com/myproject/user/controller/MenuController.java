@@ -1,14 +1,12 @@
 package cn.com.myproject.user.controller;
 
 import cn.com.myproject.security.SecurityUser;
-import cn.com.myproject.user.entity.VO.MenuVO;
-import cn.com.myproject.user.service.IResourceService;
+import cn.com.myproject.service.ISysResourceService;
+import cn.com.myproject.sysuser.entity.VO.MenuVO;
 import cn.com.myproject.util.Message;
 import cn.com.myproject.util.MessageUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -26,7 +24,7 @@ public class MenuController {
 
 
     @Autowired
-    private IResourceService resourceService;
+    private ISysResourceService sysResourceService;
 
     @RequestMapping("/get")
     @ResponseBody
@@ -41,6 +39,6 @@ public class MenuController {
         if(null == user) {
             return MessageUtils.getFail("请登录");
         }
-        return MessageUtils.getSuccess(resourceService.getMenu(menuId,user.getUserId()));
+        return MessageUtils.getSuccess(sysResourceService.getMenu(menuId,user.getUserId()));
     }
 }

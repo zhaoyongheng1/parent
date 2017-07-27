@@ -1,12 +1,9 @@
 package cn.com.myproject.index.controller;
 
-import cn.com.myproject.user.service.IUserService;
+import cn.com.myproject.service.ISysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 /**
  * Created by liyang-macbook on 2017/6/22.
@@ -15,7 +12,7 @@ import java.io.IOException;
 public class IndexController {
 
     @Autowired
-    private IUserService userService;
+    private ISysUserService userService;
 
 
     @RequestMapping({"/index","/"})
@@ -25,7 +22,6 @@ public class IndexController {
 
     @RequestMapping({"/demo","/demo1"})
     public String demo(){
-        userService.getAll();
         return "demo";
     }
 

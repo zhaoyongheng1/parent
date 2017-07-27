@@ -1,10 +1,11 @@
 package cn.com.myproject.api.user.controller;
 
-import cn.com.myproject.api.user.entity.Constant;
-import cn.com.myproject.api.user.entity.PO.User;
-import cn.com.myproject.api.user.service.IUserService;
+
+import cn.com.myproject.api.service.IUserService;
 import cn.com.myproject.api.util.Message;
 import cn.com.myproject.api.util.MessageUtils;
+import cn.com.myproject.user.entity.Constant;
+import cn.com.myproject.user.entity.PO.User;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

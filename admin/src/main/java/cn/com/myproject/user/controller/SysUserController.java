@@ -1,7 +1,8 @@
 package cn.com.myproject.user.controller;
 
-import cn.com.myproject.user.entity.VO.SysUserVO;
-import cn.com.myproject.user.service.IUserService;
+
+import cn.com.myproject.service.ISysUserService;
+import cn.com.myproject.sysuser.entity.VO.SysUserVO;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class SysUserController {
 
     @Autowired
-    private IUserService userService;
+    private ISysUserService sysUserService;
 
     @RequestMapping("/")
     public String index() {
@@ -30,8 +31,8 @@ public class SysUserController {
 
     @ResponseBody
     @RequestMapping("/list")
-    public PageInfo<SysUserVO> list(Integer rows,Integer page) {
-        PageInfo<SysUserVO> info = userService.getPage(page,rows);
+    public PageInfo<SysUserVO> list(Integer rows, Integer page) {
+        PageInfo<SysUserVO> info = sysUserService.getPage(page,rows);
         return info;
     }
 }

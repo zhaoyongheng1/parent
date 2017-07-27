@@ -1,16 +1,14 @@
 package cn.com.myproject.api.live.controller;
 
-import cn.com.myproject.api.im.VO.ResultChatroom;
-import cn.com.myproject.api.im.VO.chatroom.IMGetVO;
-import cn.com.myproject.api.im.VO.chatroom.IMRequestAddrReturnVO;
-import cn.com.myproject.api.im.VO.chatroom.IMRequestAddrVO;
-import cn.com.myproject.api.im.service.IIMChatroomService;
-import cn.com.myproject.api.live.entity.PO.ChatRoom;
-import cn.com.myproject.api.live.service.IChatRoomService;
-import cn.com.myproject.api.user.entity.Constant;
-import cn.com.myproject.api.user.entity.PO.User;
+
+import cn.com.myproject.api.service.IChatRoomService;
 import cn.com.myproject.api.util.Message;
 import cn.com.myproject.api.util.MessageUtils;
+import cn.com.myproject.live.entity.PO.ChatRoom;
+import cn.com.myproject.netease.VO.chatroom.IMRequestAddrReturnVO;
+import cn.com.myproject.netease.VO.chatroom.IMRequestAddrVO;
+import cn.com.myproject.user.entity.Constant;
+import cn.com.myproject.user.entity.PO.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,8 +28,6 @@ public class ChatroomController {
     @Autowired
     private IChatRoomService chatRoomService;
 
-    @Autowired
-    private IIMChatroomService imChatroomService;
 
     @RequestMapping("/homeList")
     public Message homeList(){
@@ -51,7 +47,7 @@ public class ChatroomController {
         IMRequestAddrVO vo = new IMRequestAddrVO();
         vo.setRoomid(roomid);
         vo.setAccid(user.getAccid());
-        IMRequestAddrReturnVO result = imChatroomService.requestAddr(vo);
+        IMRequestAddrReturnVO result = chatRoomService.requestAddr(vo);
         if(result.getCode() == 200){
             Message message = MessageUtils.getSuccess("获取成功");
             message.setData(result.getAddr());
