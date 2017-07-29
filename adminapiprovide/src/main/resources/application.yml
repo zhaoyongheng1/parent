@@ -35,11 +35,14 @@ sms:
     username: dongheng
     password: pkDuLx8f
     productid: 676767
-    signature: 【myproject】
+    signature: 【助通科技】
     productid2: 887362
     productid3: 435227
     batchurl: http://www.ztsms.cn/sendManyNSms.do
     gurl: http://www.ztsms.cn/sendGSms.do
+    gpassword: oKJHi5Ty
+    gusername: donghenggj
+    product-id-g: 151230
 
 
 spring:

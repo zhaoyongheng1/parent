@@ -50,7 +50,7 @@
 <!-- inline scripts related to this page -->
 <script src="${ctx}/assets/js/jquery-ui.min.js"></script>
 <script src="${ctx}/assets/js/jquery.ui.touch-punch.min.js"></script>
-
+<script src="${ctx}/js/jquery.form.js"></script>
 <script type="text/javascript">
 
     jQuery(function($) {
@@ -217,6 +217,10 @@
                         text: "保存",
                         "class" : "btn btn-primary btn-minier",
                         click: function() {
+                            $('#adduser').ajaxSubmit({dataType:'json',url:'${ctx}/sysuser/uploadImg',success: function(resp) {
+
+                                return false;
+                            }});
                             $( this ).dialog( "close" );
                         }
                     },

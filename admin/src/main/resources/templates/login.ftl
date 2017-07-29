@@ -33,6 +33,8 @@
 		<script src="${ctx}/assets/js/html5shiv.min.js"></script>
 		<script src="${ctx}/assets/js/respond.min.js"></script>
 		<![endif]-->
+
+        <#--<script src="https://qiyukf.com/script/5973b81e9a87bb770aea5d9cc2467808.js"></script>-->
 	</head>
 
 	<body class="login-layout">

@@ -26,6 +26,7 @@ public class AdminApplication extends WebMvcConfigurerAdapter {
 		return new ConcurrentTaskScheduler(); //single threaded by default
 	}
 
+
 	public static void main(String[] args) {
 		SpringApplication.run(AdminApplication.class, args);
 	}

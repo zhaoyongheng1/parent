@@ -29,6 +29,9 @@ public class ZhuTongSmsProp {
 
     private String username;
     private String password;
+
+    private String gusername;
+    private String gpassword;
     /**
      * 验证码产品ID
      * */
@@ -124,5 +127,21 @@ public class ZhuTongSmsProp {
 
     public void setProductIdG(String productIdG) {
         this.productIdG = productIdG;
+    }
+
+    public String getGusername() {
+        return gusername;
+    }
+
+    public void setGusername(String gusername) {
+        this.gusername = gusername;
+    }
+
+    public String getGpassword() {
+        return gpassword;
+    }
+
+    public void setGpassword(String gpassword) {
+        this.gpassword = gpassword;
     }
 }

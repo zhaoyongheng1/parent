@@ -19,4 +19,5 @@ public interface ISysUserService {
 
     @GetMapping("/sysuser/getPage")
     PageInfo<SysUserVO> getPage(@RequestParam("pageNum") int pageNum,@RequestParam("pageSize") int pageSize);
+
 }

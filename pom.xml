@@ -27,6 +27,8 @@
         <module>admin</module>
         <module>api</module>
         <module>consul</module>
+        <module>adminapiprovide</module>
+        <module>admincommon</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

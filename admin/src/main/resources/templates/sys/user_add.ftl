@@ -1,9 +1,9 @@
-<form class="form-horizontal" role="form">
+<form class="form-horizontal" role="form" id="adduser" enctype="multipart/form-data" method="post">
     <div class="form-group">
         <label class="col-sm-3 control-label no-padding-right" for="loginName">登录名</label>
 
         <div class="col-sm-9">
-            <input type="text" id="loginName" placeholder="登录名" class="col-xs-10 col-sm-5" />
+            <input type="text" id="loginName" name="loginName" placeholder="登录名" class="col-xs-10 col-sm-5" />
         </div>
     </div>
 
@@ -27,4 +27,13 @@
 			</span>
         </div>
     </div>
+
+    <div class="form-group">
+        <label class="col-sm-3 control-label no-padding-right" for="userName">身份证</label>
+
+        <div class="col-sm-9">
+            <input type="file" id="file" name="file" class="col-xs-10 col-sm-5" />
+        </div>
+    </div>
+
 </form>

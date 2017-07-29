@@ -114,11 +114,11 @@ public class SendSmsServiceZT implements ISendSmsService {
 			logger.error("转码错误",e);
 		}
 		StringBuilder sb = new StringBuilder();
-		sb.append("username=").append(zhuTongSmsProp.getUsername())
-				.append("&password=").append(MD5Gen.getMD5(MD5Gen.getMD5(zhuTongSmsProp.getPassword())))
+		sb.append("username=").append(zhuTongSmsProp.getGusername())
+				.append("&password=").append(MD5Gen.getMD5(zhuTongSmsProp.getGpassword()))
 				.append("&mobile=").append(StringUtils.join(mobile,",")).append("&content=")
 				.append(content).append("&productid=").append(proucetId);
-		String ret= HttpRequest.sendPost(zhuTongSmsProp.getBatchurl(), sb.toString());
+		String ret= HttpRequest.sendPost(zhuTongSmsProp.getGurl(), sb.toString());
 		if(ret.startsWith("1,")) {
 			return true;
 		}else {
