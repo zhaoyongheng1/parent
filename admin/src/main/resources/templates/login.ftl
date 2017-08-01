@@ -80,7 +80,13 @@
 															<i class="ace-icon fa fa-lock"></i>
 														</span>
 													</label>
-
+                                                    <label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="text" class="form-control" name="vrify" placeholder="验证码" />
+															<i class="ace-icon fa fa-lock"></i>
+															 <img alt="验证码" onclick = "this.src='${ctx}/defaultKaptcha?d='+new Date()*1" src="${ctx}/defaultKaptcha" />
+														</span>
+                                                    </label>
 													<div class="space"></div>
 
 													<div class="clearfix">

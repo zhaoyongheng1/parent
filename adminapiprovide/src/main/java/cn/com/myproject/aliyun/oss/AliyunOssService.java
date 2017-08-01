@@ -28,9 +28,10 @@ public class AliyunOssService implements IAliyunOssService {
     }
 
     @Override
-    public void upload(String key,InputStream inputStream) {
+    public String upload(String key,InputStream inputStream) {
         OSSClient ossClient = this.create();
         PutObjectResult result = ossClient.putObject(aliyunOssProp.getBucketName(),key,inputStream);
         this.shutDown(ossClient);
+        return "http://"+aliyunOssProp.getBucketName()+"."+aliyunOssProp.getEndpoint()+"/"+key;
     }
 }

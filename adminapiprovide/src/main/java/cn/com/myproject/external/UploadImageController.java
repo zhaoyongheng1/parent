@@ -33,25 +33,24 @@ public class UploadImageController {
     DiscoveryClient discoveryClient;
 
     @PostMapping("/uploadImg")
-    public String uploadImg(MultipartFile file)  {
+    public String uploadImg(MultipartFile upfile)  {
         logger.debug("调用者："+discoveryClient.getServices());
-        if(null == file || file.isEmpty()) {
+        if(null == upfile || upfile.isEmpty()) {
             return "";
         }
-        String filename = file.getOriginalFilename();
-        String url = UploadImageController.getImgPath()+filename.split("\\.")[1];
+        String filename = upfile.getOriginalFilename();
+        String url = UploadImageController.getImgPath()+filename.substring(filename.lastIndexOf("."));
         try {
-            aliyunOssService.upload(url,file.getInputStream());
+            return aliyunOssService.upload(url,upfile.getInputStream());
         } catch (IOException e) {
             logger.error("上传失败",e);
             return "";
         }
-        return url;
     }
 
     private static String getImgPath() {
         LocalDate date = LocalDate.now();
-        return "image/"+date.getYear()+"/"+date.getMonth().getValue()+"/"+date.getDayOfMonth()+"/"+ UUID.randomUUID()+".";
+        return "image/"+date.getYear()+"/"+date.getMonth().getValue()+"/"+date.getDayOfMonth()+"/"+ UUID.randomUUID();
     }
 
 }

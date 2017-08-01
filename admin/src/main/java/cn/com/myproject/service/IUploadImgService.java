@@ -15,6 +15,6 @@ import org.springframework.web.multipart.MultipartFile;
 public interface IUploadImgService {
 
     @PostMapping(value = "/uploadImg",produces = {MediaType.APPLICATION_JSON_UTF8_VALUE},consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    String uploadImg(@RequestPart("file") MultipartFile file);
+    String uploadImg(@RequestPart("upfile") MultipartFile file);
 
 }

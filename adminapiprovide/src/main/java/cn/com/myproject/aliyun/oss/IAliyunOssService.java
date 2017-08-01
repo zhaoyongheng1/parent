@@ -13,5 +13,5 @@ public interface IAliyunOssService {
 
     void shutDown(OSSClient client);
 
-    void upload(String key, InputStream inputStream);
+    String upload(String key, InputStream inputStream);
 }

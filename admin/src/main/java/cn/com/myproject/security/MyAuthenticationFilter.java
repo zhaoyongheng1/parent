@@ -3,8 +3,10 @@ package cn.com.myproject.security;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.SpringSecurityMessageSource;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.stereotype.Component;
 
@@ -22,6 +24,7 @@ public class MyAuthenticationFilter extends UsernamePasswordAuthenticationFilter
 
     private static Logger logger = LoggerFactory.getLogger(MyAuthenticationFilter.class);
 
+
     @Autowired
     private AuthenticationManager authenticationManager;
 
@@ -33,6 +36,17 @@ public class MyAuthenticationFilter extends UsernamePasswordAuthenticationFilter
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) {
         if(logger.isDebugEnabled()){
             logger.debug("进入......");
+        }
+
+
+        String requestCaptcha = request.getParameter("vrify");
+        String genCaptcha = (String)request.getSession().getAttribute("vrifyCode");
+
+        logger.info("开始校验验证码，生成的验证码为："+genCaptcha+" ，输入的验证码为："+requestCaptcha);
+
+        if( !genCaptcha.equals(requestCaptcha)){
+            throw new RuntimeException(
+                    this.messages.getMessage("AbstractUserDetailsAuthenticationProvider.badCaptcha","验证码错误"));
         }
         return super.attemptAuthentication(request, response);
     }

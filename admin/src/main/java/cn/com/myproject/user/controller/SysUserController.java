@@ -27,8 +27,6 @@ public class SysUserController {
     @Autowired
     private ISysUserService sysUserService;
 
-    @Autowired
-    private IUploadImgService uploadImgService;
 
     @RequestMapping("/")
     public String index() {
@@ -40,12 +38,7 @@ public class SysUserController {
         return "sys/user_add";
     }
 
-    @RequestMapping("/uploadImg")
-    public String uploadImg(@RequestParam("file") MultipartFile file, HttpServletRequest req) {
-        String url = uploadImgService.uploadImg(file);
-        logger.info(url);
-        return "";
-    }
+
 
     @ResponseBody
     @RequestMapping("/list")
@@ -54,5 +47,9 @@ public class SysUserController {
         return info;
     }
 
+    @RequestMapping("/demoUE")
+    public String demoUE() {
+        return "demoUE";
+    }
 
 }
