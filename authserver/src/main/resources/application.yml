@@ -3,9 +3,9 @@ spring:
     name: authserver
   datasource:
     name: oauth
-    url: jdbc:mysql://192.168.2.172:3306/waikuai
-    username: waikuai
-    password: waikuai
+    url: jdbc:mysql://192.168.1.204:3306/cloud_auth
+    username: cloud
+    password: cloud
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.jdbc.Driver
     filters: stat
@@ -22,11 +22,10 @@ spring:
     poolPreparedStatements: true
     maxOpenPreparedStatements: 20
   redis:
-    database: 9
-    host: 192.168.2.204
+    database: 15
+    host: 192.168.1.203
     prot: 6379
-    password: foobared
-
+    password:
 
 # Define the port where the UAA server would be running
 server:
@@ -39,7 +38,7 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://192.168.2.227:1111/eureka/,http://192.168.2.228:1111/eureka/,http://192.168.2.229:1111/eureka/
+      defaultZone: http://192.168.1.205:1111/eureka/,http://192.168.1.206:1111/eureka/,http://192.168.1.207:1111/eureka/
   instance:
     prefer-ip-address: true
 # Define security

@@ -24,3 +24,4 @@ log/
 logs/
 .git/
 src/main/java/cn/com/myproject/api/im/controller/
+/.idea/

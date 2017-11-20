@@ -7,7 +7,7 @@
     <groupId>cn.com.myproject</groupId>
     <artifactId>parent</artifactId>
     <packaging>pom</packaging>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
     <modules>
         <module>configserver</module>
         <module>servercenter</module>
@@ -23,18 +23,40 @@
         <module>authserver</module>
         <module>zipkinstreamserver</module>
         <module>mq</module>
-        <module>neteasevideo</module>
         <module>admin</module>
         <module>api</module>
         <module>consul</module>
         <module>adminapiprovide</module>
         <module>admincommon</module>
+        <module>search</module>
+        <module>mqreceive</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.4.RELEASE</version>
+        <!--<version>1.5.8.RELEASE</version>-->
+        <version>2.0.0.M3</version>
     </parent>
+    <repositories>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/libs-milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/libs-milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
@@ -44,7 +66,8 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Dalston.SR1</version>
+                <!--<version>Dalston.SR4</version>-->
+                <version>Finchley.M2</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

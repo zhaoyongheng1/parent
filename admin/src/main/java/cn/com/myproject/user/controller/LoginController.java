@@ -75,6 +75,7 @@ public class LoginController {
     public String qqLogin(HttpServletRequest request, HttpServletResponse response){
 
         response.setContentType("text/html;charset=utf-8");
+        System.out.println("111122211112");
         try {
             response.sendRedirect(new Oauth().getAuthorizeURL(request));
 

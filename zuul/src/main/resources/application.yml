@@ -7,11 +7,11 @@ spring:
     sampler:
       percentage: 1.0
   rabbitmq:
-    host: 192.168.2.231
+    host: 192.168.1.211
     port: 5672
-    username: wcbtest
-    password: wcbtest
-    virtual-host: wcbtest
+    username: test
+    password: test
+    virtual-host: test
 
 # Define the port where the API gateway server would be running
 server:
@@ -21,7 +21,7 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://192.168.2.227:1111/eureka/,http://192.168.2.228:1111/eureka/,http://192.168.2.229:1111/eureka/
+      defaultZone: http://192.168.1.205:1111/eureka/,http://192.168.1.206:1111/eureka/,http://192.168.1.207:1111/eureka/
 
 zuul:
   routes:
@@ -41,10 +41,10 @@ security:
     sso:
       loginPath: /login
     client:
-      accessTokenUri: http://127.0.0.1:3333/uaa/oauth/token
+      accessTokenUri: /uaa/oauth/token
       userAuthorizationUri: /uaa/oauth/authorize
-      clientId: acme
-      clientSecret: acmesecret
+      clientId: zuul
+      clientSecret: zuul
       scope: write
     resource:
 #      user-info-uri: /uaa/oauth/user

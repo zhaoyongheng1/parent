@@ -28,7 +28,7 @@ eureka:
 
 ---
 spring:
-  profiles: peer227
+  profiles: dh242
   application:
     name: server-center
 eureka:
@@ -36,13 +36,13 @@ eureka:
 #    registerWithEureka: false
 #    fetchRegistry: false
     service-url:
-      defaultZone:  http://192.168.2.228:${server.port}/eureka/,http://192.168.2.229:${server.port}/eureka/
+      defaultZone:  http://192.168.1.243:${server.port}/eureka/,http://192.168.1.244:${server.port}/eureka/
   instance:
-    hostname: peer227
+    hostname: dh242
 
 ---
 spring:
-  profiles: peer228
+  profiles: dh243
   application:
     name: server-center
 eureka:
@@ -50,18 +50,18 @@ eureka:
 #    registerWithEureka: false
 #    fetchRegistry: false
     service-url:
-      defaultZone:  http://192.168.2.229:${server.port}/eureka/,http://192.168.2.227:${server.port}/eureka/
+      defaultZone:  http://192.168.1.242:${server.port}/eureka/,http://192.168.1.244:${server.port}/eureka/
   instance:
-    hostname: peer228
+    hostname: dh243
 
 ---
 spring:
-  profiles: peer229
+  profiles: dh244
   application:
     name: server-center
 eureka:
   client:
     service-url:
-      defaultZone:  http://192.168.2.227:${server.port}/eureka/,http://192.168.2.228:${server.port}/eureka/
+      defaultZone:  http://192.168.1.242:${server.port}/eureka/,http://192.168.1.243:${server.port}/eureka/
   instance:
-      hostname: peer229
+      hostname: dh244

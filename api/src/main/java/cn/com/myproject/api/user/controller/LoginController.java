@@ -59,7 +59,7 @@ public class LoginController {
             Map<String, Session> sessionIdToSession = this.sessionRepository.findByIndexNameAndIndexValue(FindByIndexNameSessionRepository.PRINCIPAL_NAME_INDEX_NAME,user.getUserId());
             if(null != sessionIdToSession && !sessionIdToSession.isEmpty()) {
                 for(String str:sessionIdToSession.keySet()) {
-                    sessionRepository.delete(str);
+                    sessionRepository.deleteById(str);
                 }
             }
             httpSession.setAttribute(FindByIndexNameSessionRepository.PRINCIPAL_NAME_INDEX_NAME, user.getUserId());
