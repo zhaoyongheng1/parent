@@ -2,8 +2,6 @@ spring:
   profiles:
     active: #spring.profiles.active#
 
-server:
-  port: 1111
 
 logging:
   file: ./log/log.log
@@ -11,6 +9,10 @@ logging:
 eureka:
   instance:
     prefer-ip-address: true
+
+
+server:
+  port: 8761
 
 ---
 spring:

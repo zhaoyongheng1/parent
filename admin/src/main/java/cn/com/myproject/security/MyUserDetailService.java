@@ -1,11 +1,10 @@
 package cn.com.myproject.security;
 
 import cn.com.myproject.service.ISysUserService;
-import cn.com.myproject.sysuser.entity.VO.SysUserVO;
+import cn.com.myproject.adminuser.vo.SysUserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

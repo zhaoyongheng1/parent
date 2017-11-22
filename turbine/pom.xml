@@ -26,7 +26,7 @@
 
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-turbine-stream</artifactId>
+			<artifactId>spring-cloud-starter-netflix-turbine-stream</artifactId>
 		</dependency>
 
 
@@ -42,6 +42,10 @@
 			<version>4.1.13.Final</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

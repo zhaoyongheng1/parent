@@ -2,7 +2,7 @@ package cn.com.myproject.user.controller;
 
 import cn.com.myproject.security.SecurityUser;
 import cn.com.myproject.service.ISysResourceService;
-import cn.com.myproject.sysuser.entity.VO.MenuVO;
+import cn.com.myproject.adminuser.vo.MenuVO;
 import cn.com.myproject.util.Message;
 import cn.com.myproject.util.MessageUtils;
 import org.springframework.beans.factory.annotation.Autowired;

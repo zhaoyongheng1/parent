@@ -1,7 +1,7 @@
 package cn.com.myproject.service;
 
 
-import cn.com.myproject.sysuser.entity.VO.SysUserVO;
+import cn.com.myproject.adminuser.vo.SysUserVO;
 import com.github.pagehelper.PageInfo;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;

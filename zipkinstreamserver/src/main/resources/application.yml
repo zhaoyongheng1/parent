@@ -10,11 +10,11 @@ spring:
     username: test
     password: test
     virtual-host: test
-  datasource:
-    initialize: false
   profiles:
     active: mysql
-
+logging:
+  level:
+   root: info
 
 
 ---
@@ -28,11 +28,7 @@ spring:
 # Switch this on to create the schema on startup:
     #initialize: true
     continueOnError: true
-  sleuth:
-    enabled: false
-zipkin:
-  storage:
-    type: mysql # default is mem (in-memory)
 
-
-
+#zipkin:
+#  storage:
+#    type: mysql # default is mem (in-memory)

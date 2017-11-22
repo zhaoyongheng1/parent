@@ -17,25 +17,26 @@
         <module>turbine</module>
         <module>hystrixdashboard</module>
         <module>zuul</module>
-        <module>user</module>
-        <module>util</module>
-        <module>ui</module>
+
         <module>authserver</module>
         <module>zipkinstreamserver</module>
         <module>mq</module>
         <module>admin</module>
-        <module>api</module>
+
         <module>consul</module>
-        <module>adminapiprovide</module>
-        <module>admincommon</module>
+
         <module>search</module>
         <module>mqreceive</module>
+
+        <module>gumiho_redis</module>
+        <module>gumiho_admin_common</module>
+        <module>gumiho_admin_user</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <!--<version>1.5.8.RELEASE</version>-->
-        <version>2.0.0.M3</version>
+        <version>2.0.0.M6</version>
     </parent>
     <repositories>
         <repository>
@@ -67,7 +68,7 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
                 <!--<version>Dalston.SR4</version>-->
-                <version>Finchley.M2</version>
+                <version>Finchley.M4</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

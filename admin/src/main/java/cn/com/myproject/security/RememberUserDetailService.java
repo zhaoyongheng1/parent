@@ -3,7 +3,7 @@ package cn.com.myproject.security;
 
 import cn.com.myproject.redis.IRedisService;
 import cn.com.myproject.service.ISysUserService;
-import cn.com.myproject.sysuser.entity.VO.SysUserVO;
+import cn.com.myproject.adminuser.vo.SysUserVO;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;

@@ -2,19 +2,14 @@ package cn.com.myproject.user.controller;
 
 
 import cn.com.myproject.service.ISysUserService;
-import cn.com.myproject.service.IUploadImgService;
-import cn.com.myproject.sysuser.entity.VO.SysUserVO;
+import cn.com.myproject.adminuser.vo.SysUserVO;
 import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
-
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by liyang-macbook on 2017/7/11.
