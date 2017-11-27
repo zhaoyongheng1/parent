@@ -3,7 +3,7 @@ jQuery(function($) {
     var grid_selector = "#grid-table";
     var pager_selector = "#grid-pager";
     jQuery(grid_selector).jqGrid({
-        url : base + "sysuser/list",
+        url : base + "sysUser/list",
         subGrid : false,
         datatype: "json",
         height: 'auto',

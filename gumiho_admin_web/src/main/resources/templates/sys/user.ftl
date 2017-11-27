@@ -205,5 +205,5 @@
 <script src="${ctx}/assets/js/jquery-ui.min.js"></script>
 <script src="${ctx}/assets/js/jquery.ui.touch-punch.min.js"></script>
 <script src="${ctx}/js/jquery.form.js"></script>
-<script src="${ctx}/js/sys/user.js?v=0.0.2"></script>
+<script src="${ctx}/js/sys/user.js?v=0.0.3"></script>
 <#include "../common/body_bottom.ftl"/>

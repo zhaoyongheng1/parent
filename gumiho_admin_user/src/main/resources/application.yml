@@ -11,7 +11,7 @@ mybatis:
   config-location: classpath:mybatis-config.xml
 
 logging:
-  level.root: DEBUG
+  level.root: INFO
   file: ./logs/log.log
   level.org.apache.http: INFO
   level.com.netflix.discovery: INFO

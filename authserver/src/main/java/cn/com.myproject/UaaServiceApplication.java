@@ -7,7 +7,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.actuate.autoconfigure.ManagementServerProperties;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -73,7 +72,7 @@ public class UaaServiceApplication extends WebMvcConfigurerAdapter {
 //		registry.addViewController("/oauth/confirm_access").setViewName("authorize");
 	}
 
-	@Order(ManagementServerProperties.ACCESS_OVERRIDE_ORDER)
+	//@Order(ManagementServerProperties.ACCESS_OVERRIDE_ORDER)
 	@Configuration
 	protected static class LoginConfiguration extends WebSecurityConfigurerAdapter {
 

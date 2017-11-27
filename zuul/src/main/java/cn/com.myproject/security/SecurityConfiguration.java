@@ -1,7 +1,6 @@
 package cn.com.myproject.security;
 
 
-import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -28,7 +27,7 @@ import java.util.regex.Pattern;
  * @author Thibaud Leprêtre
  */
 @Configuration
-@EnableOAuth2Sso
+//@EnableOAuth2Sso
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private static final String CSRF_COOKIE_NAME = "XSRF-TOKEN";
