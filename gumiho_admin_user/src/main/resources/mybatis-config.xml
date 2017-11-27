@@ -68,14 +68,7 @@
 
 
     <typeAliases>
-        <package name="cn.com.myproject.sysuser.entity.PO"/>
-        <package name="cn.com.myproject.user.entity.PO"/>
-        <package name="cn.com.myproject.live.entity.PO"/>
-        <package name="cn.com.myproject.admincon.entity.PO"/>
-        <package name="cn.com.myproject.customer.entity.PO"/>
-        <package name="cn.com.myproject.recset.entity.PO"/>
-        <package name="cn.com.myproject.shop.entity.PO"/>
-        <package name="cn.com.myproject.goods.entity.PO"/>
+        <package name="cn.com.myproject.adminuser.po"/>
     </typeAliases>
 
     <!--<plugins>-->
@@ -110,47 +103,6 @@
 
 
     <mappers>
-
-        <!--<mapper resource="mapper/sysuser/SysUserMapper.xml"/>-->
-        <!--<mapper resource="cmapper/sysuser/SysUserRoleMapper.xml"/>-->
-        <!--<mapper resource="mapper/sysuser/SysResourceMapper.xml"/>-->
-        <!--<mapper resource="mapper/sysuser/SysRoleMapper.xml"/>-->
-        <!--<mapper resource="mapper/sysuser/SysRoleResourceMapper.xml"/>-->
-
-        <!--<mapper resource="mapper/user/UserMapper.xml"/>-->
-        <!--<mapper resource="mapper/article/ArticleMapper.xml"/>-->
-        <!--<mapper resource="mapper/configSetting/ConfigSettingMapper.xml"/>-->
-        <!--<mapper resource="mapper/advertise/AdvertiseMapper.xml"/>-->
-        <!--<mapper resource="mapper/news/NewsMapper.xml"/>-->
-
-        <!--<mapper resource="mapper/live/ChatRoomMapper.xml"/>-->
-        <!--<mapper resource="mapper/live/LiveRoomMapper.xml"/>-->
-        <!--<mapper resource="mapper/live/LiveTypeMapper.xml"/>-->
-        <!--<mapper resource="mapper/live/RobotMapper.xml"/>-->
-        <!--<mapper resource="mapper/live/CourseTopicExaminationMapper.xml"/>-->
-        <!--<mapper resource="mapper/live/CourseTopicMapper.xml"/>-->
-        <!--<mapper resource="mapper/live/CourseTopicUserAnswerMapper.xml"/>-->
-        <!--<mapper resource="mapper/user/UserTypeMapper.xml"/>-->
-
-        <!--<mapper resource="mapper/live/CommentReplyMapper.xml"/>-->
-        <!--<mapper resource="mapper/live/CourseCommentMapper.xml"/>-->
-        <!--<mapper resource="mapper/live/CourseOrderMapper.xml"/>-->
-        <!--<mapper resource="mapper/course/CourseTypeMapper.xml"/>-->
-        <!--<mapper resource="mapper/course/CourseTagMapper.xml"/>-->
-        <!--<mapper resource="mapper/course/CourseMapper.xml"/>-->
-        <!--<mapper resource="mapper/news/NewsCommentMapper.xml"/>-->
-        <!--<mapper resource="mapper/news/InformationMapper.xml"/>-->
-
-        <!--<mapper resource="mapper/admincon/ProfitShareSettingMapper.xml"/>-->
-        <!--<mapper resource="mapper/admincon/ProfitShareRelationMapper.xml"/>-->
-
-        <!--<mapper resource="mapper/recset/RecSettingsMapper.xml"/>-->
-        <!--<mapper resource="mapper/recset/RecLableMapper.xml"/>-->
-
-        <!--<mapper resource="mapper/customer/UserFeedbackMapper.xml"/>-->
-        <!--<mapper resource="mapper/customer/MessageRecordMapper.xml"/>-->
-
-        <!--<mapper resource="mapper/user/StudyLabelMapper.xml"/>-->
 
     </mappers>
 </configuration>

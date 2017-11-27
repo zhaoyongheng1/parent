@@ -1,19 +1,20 @@
 package cn.com.myproject.adminuser.service.impl;
 
-import cn.com.myproject.sysuser.entity.PO.SysRegion;
-import cn.com.myproject.sysuser.mapper.SysRegionMapper;
-import cn.com.myproject.sysuser.service.ISysRegionService;
+
+import cn.com.myproject.adminuser.mapper.SysRegionMapper;
+import cn.com.myproject.adminuser.po.SysRegion;
+import cn.com.myproject.adminuser.service.ISysRegionService;
+import cn.com.myproject.util.UUIDUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
- * @auther CQC
- * @create 2017.9.1
+ *
  */
 @Service
-public class SysRegionService implements ISysRegionService{
+public class SysRegionService implements ISysRegionService {
 
     @Autowired
     private SysRegionMapper sysRegionMapper;
@@ -25,11 +26,17 @@ public class SysRegionService implements ISysRegionService{
 
     @Override
     public int insert(SysRegion record) {
+        record.setCreateTime(System.currentTimeMillis());
+        record.setVersion(1);
+        record.setStatus((short)1);
         return sysRegionMapper.insert(record);
     }
 
     @Override
     public int insertSelective(SysRegion record) {
+        record.setCreateTime(System.currentTimeMillis());
+        record.setVersion(1);
+        record.setStatus((short)1);
         return sysRegionMapper.insertSelective(record);
     }
 

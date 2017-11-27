@@ -1,9 +1,9 @@
 package cn.com.myproject.adminuser.service.impl;
 
 
-import cn.com.myproject.sysuser.entity.PO.SysRole;
-import cn.com.myproject.sysuser.mapper.SysRoleMapper;
-import cn.com.myproject.sysuser.service.ISysRoleService;
+import cn.com.myproject.adminuser.mapper.SysRoleMapper;
+import cn.com.myproject.adminuser.po.SysRole;
+import cn.com.myproject.adminuser.service.ISysRoleService;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

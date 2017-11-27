@@ -18,10 +18,8 @@ public class RedisService implements IRedisService {
     @Autowired
     private StringRedisTemplate redisTemplate;
 
-
     @Override
     public Boolean setValue(String key, String value,long timeOut) {
-
         redisTemplate.opsForValue().set(key,value,timeOut, TimeUnit.MINUTES);
         return redisTemplate.hasKey(key);
     }
@@ -39,8 +37,6 @@ public class RedisService implements IRedisService {
     @Override
     public void setHashAll(String key,Map<String,Object> map){
         redisTemplate.opsForHash().putAll(key,map);
-
-
     }
 
     @Override

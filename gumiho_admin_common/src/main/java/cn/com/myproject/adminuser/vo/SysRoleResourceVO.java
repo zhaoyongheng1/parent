@@ -1,12 +1,13 @@
 package cn.com.myproject.adminuser.vo;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
  *
  */
-public class SysRoleResourceVO{
+public class SysRoleResourceVO implements Serializable {
 
     private String resourceId;
     private String roleId;

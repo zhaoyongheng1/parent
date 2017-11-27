@@ -3,7 +3,10 @@ package cn.com.myproject.adminuser.service.impl;
 
 import cn.com.myproject.adminuser.mapper.SysResourceMapper;
 import cn.com.myproject.adminuser.mapper.SysRoleMapper;
+import cn.com.myproject.adminuser.po.SysResource;
 import cn.com.myproject.adminuser.service.ISecurityService;
+import cn.com.myproject.redis.IRedisService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.access.SecurityConfig;

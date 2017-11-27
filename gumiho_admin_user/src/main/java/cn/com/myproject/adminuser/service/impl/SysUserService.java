@@ -1,6 +1,12 @@
 package cn.com.myproject.adminuser.service.impl;
 
 
+import cn.com.myproject.adminuser.dao.BatchSysUserRoleDao;
+import cn.com.myproject.adminuser.mapper.SysRoleMapper;
+import cn.com.myproject.adminuser.mapper.SysUserMapper;
+import cn.com.myproject.adminuser.mapper.SysUserRoleMapper;
+import cn.com.myproject.adminuser.po.SysUser;
+import cn.com.myproject.adminuser.po.SysUserRole;
 import cn.com.myproject.adminuser.service.ISysUserService;
 import cn.com.myproject.adminuser.vo.SysUserVO;
 import com.github.pagehelper.PageInfo;
@@ -11,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  *
@@ -30,15 +37,17 @@ public class SysUserService implements ISysUserService {
     @Autowired
     private BatchSysUserRoleDao batchSysUserRoleDao;
 
-    @Autowired
-    private UserMapper userMapper;
+
 
     @Override
     public SysUserVO getByLoginName(String loginName) {
+
         SysUser user =  sysUserMapper.selectByLoginName(loginName);
+
         SysUserVO vo = null;
         if(null != user){
-            vo = new SysUserVO(user);
+            vo = new SysUserVO();
+            BeanUtils.copyProperties(user,vo);
             vo.setRoleIds(sysRoleMapper.getRoleIds(user.getUserId()));
         }
         return vo;
@@ -49,7 +58,8 @@ public class SysUserService implements ISysUserService {
         SysUser user =  sysUserMapper.selectByUserName(userName);
         SysUserVO vo = null;
         if(null != user){
-            vo = new SysUserVO(user);
+            vo = new SysUserVO();
+            BeanUtils.copyProperties(user,vo);
             vo.setRoleIds(sysRoleMapper.getRoleIds(user.getUserId()));
         }
         return vo;
@@ -76,8 +86,11 @@ public class SysUserService implements ISysUserService {
         PageInfo<SysUserVO> _info = new PageInfo();
         BeanUtils.copyProperties(info,_info);
         if(null !=_list && _list.size() != 0) {
+            SysUserVO vo = null;
             for(SysUser user : _list) {
-                __list.add(new SysUserVO(user));
+                vo = new SysUserVO();
+                BeanUtils.copyProperties(user,vo);
+                __list.add(vo);
             }
             _info.setList(__list);
         }
@@ -139,14 +152,5 @@ public class SysUserService implements ISysUserService {
         return sysUserMapper.selectByUserName(userName);
     }
 
-    /**
-     * 查询用户ID和用户名
-     *
-     * @return
-     */
-    @Override
-    public List<User> searchUserIdAndName(){
-        return userMapper.selectUserIdAndName();
-    }
 
 }

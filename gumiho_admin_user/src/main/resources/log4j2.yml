@@ -12,7 +12,7 @@ Configuration:
       - name: log.path
         value: ./logs
       - name: project.name
-        value: adminapi
+        value: gumiho_admin_user
 
   Appenders:
     Console:  #输出到控制台

@@ -2,7 +2,7 @@ package cn.com.myproject.adminuser.dao.impl;
 
 
 import cn.com.myproject.adminuser.dao.BatchDemoDao;
-import cn.com.myproject.sysuser.entity.PO.SysUser;
+import cn.com.myproject.adminuser.po.SysUser;
 import org.apache.ibatis.session.ExecutorType;
 import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -27,7 +27,7 @@ public class BatchDemoDaoImpl implements BatchDemoDao {
         try{
             int i = 0;
             for(SysUser sysuser : list){
-                session.insert("cn.com.myproject.sysuser.mapper.SysUserMapper.addUsers",sysuser);
+                session.insert("cn.com.myproject.adminuser.mapper.SysUserMapper.addUsers",sysuser);
                 i++;
                 if (i % 500 == 0 ) {
                     session.commit();

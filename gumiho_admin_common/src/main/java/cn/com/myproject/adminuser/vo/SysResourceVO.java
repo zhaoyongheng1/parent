@@ -3,6 +3,7 @@ package cn.com.myproject.adminuser.vo;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 
 public class SysResourceVO {
@@ -28,6 +29,11 @@ public class SysResourceVO {
     private Long createTime;
     private Short status;
     private Integer version;
+
+    private Short menu;
+
+    private List<SysResourceVO> children;
+    private boolean hasChildren;
 
 
     public String getResourceId() {
@@ -123,5 +129,33 @@ public class SysResourceVO {
             return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(createTime));
         }
         return "";
+    }
+
+    public List<SysResourceVO> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<SysResourceVO> children) {
+        this.children = children;
+    }
+
+    public boolean getHasChildren() {
+        return hasChildren;
+    }
+
+    public void setHasChildren(boolean hasChildren) {
+        this.hasChildren = hasChildren;
+    }
+
+    public Short getMenu() {
+        return menu;
+    }
+
+    public void setMenu(Short menu) {
+        this.menu = menu;
+    }
+
+    public boolean isHasChildren() {
+        return hasChildren;
     }
 }

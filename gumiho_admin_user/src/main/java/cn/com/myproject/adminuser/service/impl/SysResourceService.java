@@ -1,9 +1,11 @@
 package cn.com.myproject.adminuser.service.impl;
 
-import cn.com.myproject.sysuser.entity.PO.SysResource;
+
+import cn.com.myproject.adminuser.mapper.SysResourceMapper;
+import cn.com.myproject.adminuser.po.SysResource;
+import cn.com.myproject.adminuser.service.ISysResourceService;
+import cn.com.myproject.adminuser.util.ConvertPO2VO;
 import cn.com.myproject.adminuser.vo.MenuVO;
-import cn.com.myproject.sysuser.mapper.SysResourceMapper;
-import cn.com.myproject.sysuser.service.ISysResourceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -111,7 +113,8 @@ public class SysResourceService implements ISysResourceService {
         boolean b = false;
         MenuVO vo = null;
         for(SysResource resource : set) {
-            vo = new MenuVO(resource);
+            vo = new MenuVO();
+            ConvertPO2VO.sysResourceToMenuVO(resource,vo);
             if(resource.getResourceId().equals(menuId)) {
                 vo.setActive("active");
                 b = true;

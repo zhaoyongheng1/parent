@@ -23,6 +23,8 @@ public class SysUserVO {
     private Integer version;
     private String roleName;
 
+    private List<SysUserRoleVO> sysUserRoleVOList;
+
     public SysUserVO(){
         super();
     }
@@ -139,5 +141,13 @@ public class SysUserVO {
 
     public void setRoleName(String roleName) {
         this.roleName = roleName;
+    }
+
+    public List<SysUserRoleVO> getSysUserRoleVOList() {
+        return sysUserRoleVOList;
+    }
+
+    public void setSysUserRoleVOList(List<SysUserRoleVO> sysUserRoleVOList) {
+        this.sysUserRoleVOList = sysUserRoleVOList;
     }
 }

@@ -1,9 +1,9 @@
 package cn.com.myproject.adminuser.service.impl;
 
-import cn.com.myproject.sysuser.dao.BatchSysUserRoleDao;
-import cn.com.myproject.sysuser.entity.PO.SysUserRole;
-import cn.com.myproject.sysuser.mapper.SysUserRoleMapper;
-import cn.com.myproject.sysuser.service.ISysUserRoleService;
+import cn.com.myproject.adminuser.dao.BatchSysUserRoleDao;
+import cn.com.myproject.adminuser.mapper.SysUserRoleMapper;
+import cn.com.myproject.adminuser.po.SysUserRole;
+import cn.com.myproject.adminuser.service.ISysUserRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

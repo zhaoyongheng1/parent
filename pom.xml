@@ -21,7 +21,7 @@
         <module>authserver</module>
         <module>zipkinstreamserver</module>
         <module>mq</module>
-        <module>admin</module>
+
 
         <module>consul</module>
 
@@ -31,6 +31,8 @@
         <module>gumiho_redis</module>
         <module>gumiho_admin_common</module>
         <module>gumiho_admin_user</module>
+        <module>gumiho_aliyun</module>
+        <module>gumiho_admin_web</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -62,6 +64,20 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
     </properties>
+
+    <distributionManagement>
+        <repository>
+            <id>dh-repo</id>
+            <name>Releases</name>
+            <url>http://192.168.1.208:8081/repository/maven-central/</url>
+        </repository>
+        <snapshotRepository>
+            <id>dh-repo</id>
+            <name>Snapshot</name>
+            <url>http://192.168.1.208:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
