@@ -133,6 +133,23 @@
         </dependency>
 
 
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-netflix-hystrix-stream</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-stream-rabbit</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-zipkin2</artifactId>
+        </dependency>
+
+
         <dependency>
             <groupId>cn.com.myproject</groupId>
             <artifactId>gumiho_admin_common</artifactId>
@@ -153,7 +170,7 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-core</artifactId>
-            <version>4.2.3.RELEASE</version>
+            <version>5.0.0.RC1</version>
         </dependency>
 
     </dependencies>

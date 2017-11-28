@@ -19,7 +19,7 @@
         <module>zuul</module>
 
         <module>authserver</module>
-        <module>zipkinstreamserver</module>
+        <module>zipkinserver</module>
         <module>mq</module>
 
 

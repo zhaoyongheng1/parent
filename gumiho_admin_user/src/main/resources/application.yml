@@ -11,10 +11,7 @@ mybatis:
   config-location: classpath:mybatis-config.xml
 
 logging:
-  level.root: INFO
-  file: ./logs/log.log
-  level.org.apache.http: INFO
-  level.com.netflix.discovery: INFO
+  config: classpath:log4j2.yml
 
 
 pagehelper:
@@ -66,7 +63,14 @@ spring:
     multipart:
       max-file-size: 2048mb
       max-request-size: 2048mb
-
+  rabbitmq:
+    host: rabbitmq.dh.com
+    port: 5672
+    username: test
+    password: test
+    virtual-host: test
+  zipkin:
+    base-url: http://zipkinstreamserver/
 
 eureka:
   client:
@@ -78,7 +82,12 @@ eureka:
 
     #instanceId: ${spring.application.name}:${spring.application.instance_id:${server.port}}
 
+
 management:
   endpoints:
     web:
       base-path: /
+
+endpoints:
+  default:
+    enabled: true
