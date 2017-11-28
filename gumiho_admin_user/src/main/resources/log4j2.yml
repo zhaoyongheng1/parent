@@ -38,27 +38,63 @@ Configuration:
           max: 1000
 
   Loggers:
-    Root:
-      level: ${sys:log.level.dh}
-      AppenderRef:
-        - ref: CONSOLE
-        - ref: ROLLING_FILE
-    Logger:
-      - name: cn.com.myproject
-        additivity: false
-        level: ${sys:log.level.dh}
-        AppenderRef:
-          - ref: CONSOLE
-          - ref: ROLLING_FILE
-      - name: com.netflix
-        additivity: false
-        level: INFO
-        AppenderRef:
-          - ref: CONSOLE
-          - ref: ROLLING_FILE
-      - name: org.apache.http
-        additivity: false
-        level: INFO
-        AppenderRef:
-          - ref: CONSOLE
-          - ref: ROLLING_FILE
+     Root:
+       level: DEBUG
+       AppenderRef:
+         - ref: CONSOLE
+         - ref: ROLLING_FILE
+     Logger:
+       - name: cn.com.myproject
+         additivity: false
+         level: DEBUG
+         AppenderRef:
+           - ref: CONSOLE
+           - ref: ROLLING_FILE
+       - name: com.netflix
+         additivity: false
+         level: INFO
+         AppenderRef:
+           - ref: CONSOLE
+           - ref: ROLLING_FILE
+       - name: org.springframework
+         additivity: false
+         level: INFO
+         AppenderRef:
+           - ref: CONSOLE
+           - ref: ROLLING_FILE
+       - name: org.springframework.web.client
+         additivity: false
+         level: DEBUG
+         AppenderRef:
+           - ref: CONSOLE
+           - ref: ROLLING_FILE
+       - name: org.mybatis
+         additivity: false
+         level: INFO
+         AppenderRef:
+           - ref: CONSOLE
+           - ref: ROLLING_FILE
+       - name: org.hibernate
+         additivity: false
+         level: INFO
+         AppenderRef:
+           - ref: CONSOLE
+           - ref: ROLLING_FILE
+       - name: org.apache.ibatis
+         additivity: false
+         level: INFO
+         AppenderRef:
+           - ref: CONSOLE
+           - ref: ROLLING_FILE
+       - name: org.springframework.http.client
+         additivity: false
+         level: DEBUG
+         AppenderRef:
+           - ref: CONSOLE
+           - ref: ROLLING_FILE
+       - name: org.apache.http.impl
+         additivity: false
+         level: DEBUG
+         AppenderRef:
+           - ref: CONSOLE
+           - ref: ROLLING_FILE

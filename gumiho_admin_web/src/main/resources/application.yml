@@ -18,12 +18,20 @@ spring:
     expose-session-attributes: false
     expose-spring-macro-helpers: false
     prefer-file-system-access: true
+  rabbitmq:
+    host: rabbitmq.dh.com
+    port: 5672
+    username: test
+    password: test
+    virtual-host: test
+  zipkin:
+    base-url: http://zipkinserver/
 
 # Define the port where the UAA server would be running
 server:
   port: 8888
   servlet:
-    context-path: /admin
+    context-path: /
 
 eureka:
   client:
@@ -54,3 +62,14 @@ feignclient:
 ueditor:
   url: /Users/liyang-macbook/
 
+management:
+  endpoints:
+    web:
+      base-path: /
+endpoints:
+  default:
+    enabled: true
+    web:
+      enabled: true
+  mappings:
+    enabled: true

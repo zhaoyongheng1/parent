@@ -70,7 +70,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().  antMatchers("/assets/**","/third/**","/error",
                 "/menu/get","/defaultKaptcha","/tologin","/css/**",
-                "/img/**","/js/**","/UEditor/**","/favicon.ico");
+                "/img/**","/js/**","/UEditor/**","/favicon.ico","/info","/status","/hystrix.stream","/mappings");
     }
 
     @Bean(name="myAuthenticationManager")

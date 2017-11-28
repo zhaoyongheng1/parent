@@ -20,6 +20,9 @@ public class FreeMarkerConfig {
 
     @PostConstruct
     public void  init() throws TemplateModelException {
+        if("/".equals(contextPath)) {
+            contextPath = "";
+        }
         configuration.setSharedVariable("ctx",contextPath);
     }
 

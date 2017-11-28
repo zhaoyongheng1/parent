@@ -70,7 +70,7 @@ spring:
     password: test
     virtual-host: test
   zipkin:
-    base-url: http://zipkinstreamserver/
+    base-url: http://zipkinserver/
 
 eureka:
   client:
