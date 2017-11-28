@@ -1,8 +1,7 @@
 
 server:
   port: 5001
-  servlet:
-    context-path: /
+  context-path: /
 
 
 
@@ -27,18 +26,6 @@ eureka:
   instance:
     prefer-ip-address: true
 
-management:
-  endpoints:
-    web:
-      base-path: /application
-
-endpoints:
-  default:
-    enabled: true
-    web:
-      enabled: true
-  mappings:
-    enabled: true
 
 logging:
   level:
