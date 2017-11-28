@@ -38,6 +38,6 @@ public class CustomerController {
 
     @RequestMapping("/get")
     public Customer get(String id) {
-        return customerService.findOne(id).orElse(null);
+        return customerService.findOne(id);
     }
 }
