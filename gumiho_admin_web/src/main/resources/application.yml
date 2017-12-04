@@ -30,8 +30,7 @@ spring:
 # Define the port where the UAA server would be running
 server:
   port: 8888
-  servlet:
-    context-path: /
+  context-path: /
 
 eureka:
   client:
@@ -62,14 +61,6 @@ feignclient:
 ueditor:
   url: /Users/liyang-macbook/
 
-management:
-  endpoints:
-    web:
-      base-path: /
-endpoints:
-  default:
-    enabled: true
-    web:
-      enabled: true
-  mappings:
-    enabled: true
+
+
+
