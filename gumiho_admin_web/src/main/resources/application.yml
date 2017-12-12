@@ -61,6 +61,16 @@ feignclient:
 ueditor:
   url: /Users/liyang-macbook/
 
+feign:
+  compression:
+    request:
+      min-request-size: 2048
+      enabled: true
+    response:
+      enabled: true
+
+
+
 
 
 

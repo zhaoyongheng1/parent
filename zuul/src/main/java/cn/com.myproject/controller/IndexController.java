@@ -14,10 +14,10 @@ public class IndexController {
 
     @RequestMapping("/")
     public String index(HttpServletRequest request){
-        return "index";
+        return "zuul-index";
     }
     @RequestMapping("/index")
     public String index1(HttpServletRequest request){
-        return "index1";
+        return "zuul-index1";
     }
 }

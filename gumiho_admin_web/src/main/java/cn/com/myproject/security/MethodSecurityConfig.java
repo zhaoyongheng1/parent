@@ -11,8 +11,8 @@ import org.springframework.security.config.annotation.method.configuration.Globa
  * Created by liyang-macbook on 2017/6/26.
  */
 
-@Configuration
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+//@Configuration
+//@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class MethodSecurityConfig extends GlobalMethodSecurityConfiguration {
 
     @Autowired

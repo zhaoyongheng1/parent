@@ -33,6 +33,8 @@
         <module>gumiho_admin_user</module>
         <module>gumiho_aliyun</module>
         <module>gumiho_admin_web</module>
+        <module>gumiho_pay</module>
+        <module>authclient</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

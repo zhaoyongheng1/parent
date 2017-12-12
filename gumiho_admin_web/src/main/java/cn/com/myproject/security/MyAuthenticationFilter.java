@@ -21,7 +21,7 @@ import java.io.IOException;
  * 如增加验证码验证
  * Created by liyang-macbook on 2017/6/23.
  */
-@Component("myAuthenticationFilter")
+//@Component("myAuthenticationFilter")
 public class MyAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     private static Logger logger = LoggerFactory.getLogger(MyAuthenticationFilter.class);

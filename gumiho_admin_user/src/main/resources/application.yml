@@ -1,8 +1,7 @@
 
 server:
-  port: 3333
-  servlet:
-    context-path: /
+  port: 3334
+  context-path: /
 
 
 mybatis:
@@ -83,11 +82,3 @@ eureka:
     #instanceId: ${spring.application.name}:${spring.application.instance_id:${server.port}}
 
 
-management:
-  endpoints:
-    web:
-      base-path: /
-
-endpoints:
-  default:
-    enabled: true

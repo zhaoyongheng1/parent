@@ -16,7 +16,7 @@ import java.util.Collection;
 public class MyUserDetailService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        //FIXME 需要改为调用wcbuser服务
+        //FIXME 需要改为调用服务
         Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
         SimpleGrantedAuthority authority = new SimpleGrantedAuthority("ROLE_TEST,USER");
         authorities.add(authority);

@@ -15,7 +15,7 @@ public class FreeMarkerConfig {
     @Autowired
     private freemarker.template.Configuration configuration;
 
-    @Value("${server.servlet.context-path}")
+    @Value("${server.context-path}")
     private String contextPath;
 
     @PostConstruct

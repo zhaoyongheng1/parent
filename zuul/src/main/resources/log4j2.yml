@@ -4,9 +4,9 @@ Configuration:
   Properties: # 定义全局变量
     Property: # 缺省配置（用于开发环境）。其他环境需要在VM参数中指定，如下：
       - name: log.level.console
-        value: INFO
+        value: DEBUG
       - name: log.level.wcb
-        value: INFO
+        value: DEBUG
       - name: log.path
         value: ./logs
       - name: project.name
@@ -42,7 +42,7 @@ Configuration:
         - ref: CONSOLE
         - ref: ROLLING_FILE
     Logger:
-      - name: cn.wcb
+      - name: cn.com.myproject
         additivity: false
         level: ${sys:log.level.wcb}
         AppenderRef:
@@ -55,6 +55,12 @@ Configuration:
           - ref: CONSOLE
           - ref: ROLLING_FILE
       - name: org.apache.http
+        additivity: false
+        level: INFO
+        AppenderRef:
+          - ref: CONSOLE
+          - ref: ROLLING_FILE
+      - name: org.springframework.integration.endpoint
         additivity: false
         level: INFO
         AppenderRef:

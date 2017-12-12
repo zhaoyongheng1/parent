@@ -20,8 +20,8 @@ import javax.servlet.Filter;
  * 此方法为url验证的主config
  * Created by liyang-macbook on 2017/6/17.
  */
-@Configuration
-@EnableWebSecurity
+//@Configuration
+//@EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     public static final String URL_SECURITY_KEY = "url_security";
