@@ -35,6 +35,8 @@
         <module>gumiho_admin_web</module>
         <module>gumiho_pay</module>
         <module>authclient</module>
+        <module>authclient1</module>
+        <module>authclient2</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

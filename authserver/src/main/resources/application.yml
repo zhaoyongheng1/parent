@@ -31,9 +31,15 @@ eureka:
 # Define security
 security:
   basic:
-    enabled: false
+    enabled: true
   user:
-    password: password
+    password: ly
+    name: ly
+  ignored: /error,/css/**,/img/**,/js/**,/UEditor/**,/favicon.ico
+  oauth2:
+    resource:
+      id: authserver
+      token-info-uri: http://oauth2.dh.com:8889/uaa/oauth/check_token
 
 logging:
   level.root: DEBUG

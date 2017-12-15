@@ -6,6 +6,8 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
 
+import javax.servlet.http.HttpServletResponse;
+
 @Configuration
 @EnableResourceServer
 public class ResourceServer extends ResourceServerConfigurerAdapter {
@@ -13,21 +15,19 @@ public class ResourceServer extends ResourceServerConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
 
-//        http
-//        .exceptionHandling()
-//        .authenticationEntryPoint((request, response, authException) -> response.sendError(HttpServletResponse.SC_UNAUTHORIZED))
-//        .and()
-//        .authorizeRequests()
-//        .anyRequest().authenticated();
-        http.requestMatchers().antMatchers("/api/**")
-                .and()
-                .authorizeRequests()
-                .antMatchers("/api/**").authenticated();
+        http
+        .exceptionHandling()
+        .authenticationEntryPoint((request, response, authException) -> response.sendError(HttpServletResponse.SC_UNAUTHORIZED))
+        .and()
+        .authorizeRequests()
+        .anyRequest().authenticated();
     }
+
 
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
 
     }
+
 
 }

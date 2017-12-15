@@ -33,6 +33,10 @@ public class AuthorizationServer extends AuthorizationServerConfigurerAdapter {
     @Autowired
     private AuthenticationManager authenticationManager;
 
+
+    @Autowired
+    private MyUserDetailService myUserDetailService;
+
     @Autowired
     private DataSource dataSource;
 
@@ -73,10 +77,9 @@ public class AuthorizationServer extends AuthorizationServerConfigurerAdapter {
         endpoints.tokenStore(tokenStore());
         endpoints.approvalStore(approvalStore());
         endpoints.authorizationCodeServices(authorizationCodeServices());
-        endpoints.allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.PUT);
+        endpoints.allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.PUT,HttpMethod.POST);
         endpoints.setClientDetailsService(clientDetails());
-        endpoints.userDetailsService(new MyUserDetailService());
-
+        endpoints.userDetailsService(myUserDetailService);
         endpoints.authenticationManager(authenticationManager);
         endpoints.accessTokenConverter(new DefaultAccessTokenConverter());
         //endpoints.accessTokenConverter(jwtAccessTokenConverter());

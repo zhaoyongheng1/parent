@@ -59,10 +59,11 @@ public class Page implements Serializable {
 	 * 取总页数.
 	 */
 	public long getTotalPageCount() {
-		if (totalCount % pageSize == 0)
+		if (totalCount % pageSize == 0) {
 			return totalCount / pageSize;
-		else
+		} else {
 			return totalCount / pageSize + 1;
+		}
 	}
 
 	/**

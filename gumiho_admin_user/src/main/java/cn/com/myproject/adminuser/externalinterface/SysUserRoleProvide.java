@@ -64,7 +64,7 @@ public class SysUserRoleProvide {
             List<SysUserRole> sysUserRoleList = new ArrayList<>();
             SysUserRole sysUserRole;
             for(SysUserRoleVO sysUserRoleVO:sysUserRoleVOList){
-                sysUserRoleVO.setCreateTime(new Date().getTime());
+                sysUserRoleVO.setCreateTime(System.currentTimeMillis());
                 sysUserRole = new SysUserRole();
                 BeanUtils.copyProperties(sysUserRoleVO,sysUserRole);
                 sysUserRoleList.add(sysUserRole);

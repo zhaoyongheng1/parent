@@ -34,6 +34,7 @@ public class MySecurityFilter   extends AbstractSecurityInterceptor implements F
         super.setAccessDecisionManager(customAccessDecisionManager);
     }
 
+    @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
         FilterInvocation fi = new FilterInvocation( request, response, chain );
@@ -42,6 +43,7 @@ public class MySecurityFilter   extends AbstractSecurityInterceptor implements F
     }
 
 
+    @Override
     public Class<? extends Object> getSecureObjectClass(){
         return FilterInvocation.class;
     }

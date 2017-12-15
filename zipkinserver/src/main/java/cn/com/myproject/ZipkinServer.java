@@ -11,18 +11,18 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package zipkin.server;
+package cn.com.myproject;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 
 @SpringBootApplication
-@EnableZipkinServer
+//@EnableZipkinServer
 public class ZipkinServer {
 
   public static void main(String[] args) {
-    new SpringApplicationBuilder(ZipkinServer.class)
-        .listeners(new RegisterZipkinHealthIndicators())
-        .properties("spring.config.name=zipkin-server").run(args);
+//    new SpringApplicationBuilder(ZipkinServer.class)
+//        .listeners(new RegisterZipkinHealthIndicators())
+//        .properties("spring.config.name=zipkin-server").run(args);
   }
 }

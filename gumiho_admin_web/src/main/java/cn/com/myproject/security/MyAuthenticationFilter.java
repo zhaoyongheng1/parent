@@ -35,6 +35,7 @@ public class MyAuthenticationFilter extends UsernamePasswordAuthenticationFilter
         super.setAuthenticationManager(authenticationManager);
     }
 
+    @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) {
         if(logger.isDebugEnabled()){
             logger.debug("进入......");

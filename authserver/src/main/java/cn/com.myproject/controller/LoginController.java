@@ -24,13 +24,14 @@ public class LoginController {
         return "authorize";
     }
 
-    @RequestMapping(value={"/user","/oauth/user"})
+    @RequestMapping(value={"/oauth/user"})
     @ResponseBody
     public java.util.Map<String, Object> user(Principal user) {
         Map<String, Object> map = new LinkedHashMap<>();
         map.put("name", user.getName());
         return map;
     }
+
     @RequestMapping(value={"/"})
     @ResponseBody
     public String index() {

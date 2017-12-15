@@ -54,7 +54,7 @@ public class SysRoleResourceService implements ISysRoleResourceService {
                         SysRoleResource sysRoleResource = new SysRoleResource();
                         sysRoleResource.setRoleId(roleId);
                         sysRoleResource.setResourceId(str);
-                        sysRoleResource.setCreateTime(new Date().getTime());
+                        sysRoleResource.setCreateTime(System.currentTimeMillis());
                         sysRoleResource.setStatus((short)1);
                         sysRoleResource.setVersion(1);
                         addRoleResouces.add(sysRoleResource);

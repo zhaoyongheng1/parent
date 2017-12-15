@@ -96,7 +96,7 @@ public class SysUserProvide {
                 SysUserRole sysUserRole;
                 for(SysUserRoleVO sysUserRoleVO:sysUserRoleVOList){
                     sysUserRoleVO.setUserId(sysUserVO.getUserId());
-                    sysUserRoleVO.setCreateTime(new Date().getTime());
+                    sysUserRoleVO.setCreateTime(System.currentTimeMillis());
                     sysUserRole = new SysUserRole();
                     BeanUtils.copyProperties(sysUserRoleVO,sysUserRole);
                     sysUserRoleList.add(sysUserRole);
@@ -127,7 +127,7 @@ public class SysUserProvide {
                     SysUserRole sysUserRole;
                     for(SysUserRoleVO sysUserRoleVO:sysUserRoleVOList){
                         sysUserRoleVO.setUserId(uuid);
-                        sysUserRoleVO.setCreateTime(new Date().getTime());
+                        sysUserRoleVO.setCreateTime(System.currentTimeMillis());
                         sysUserRole = new SysUserRole();
                         BeanUtils.copyProperties(sysUserRoleVO,sysUserRole);
                         sysUserRoleList.add(sysUserRole);
