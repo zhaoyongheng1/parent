@@ -19,14 +19,15 @@ public class ResourceServer extends ResourceServerConfigurerAdapter {
         .exceptionHandling()
         .authenticationEntryPoint((request, response, authException) -> response.sendError(HttpServletResponse.SC_UNAUTHORIZED))
         .and()
+                //.requestMatchers().antMatchers("/login").and()
         .authorizeRequests()
-        .anyRequest().authenticated();
+        .antMatchers("/private/**").authenticated();
     }
 
 
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
-
+        resources.resourceId("authclient1");
     }
 
 

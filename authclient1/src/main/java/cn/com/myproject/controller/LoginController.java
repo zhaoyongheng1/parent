@@ -1,32 +1,38 @@
-package cn.com.myproject;
+package cn.com.myproject.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
-import org.springframework.cloud.client.SpringCloudApplication;
-import org.springframework.context.annotation.Bean;
-import org.springframework.security.oauth2.client.DefaultOAuth2ClientContext;
 import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.security.oauth2.client.resource.BaseOAuth2ProtectedResourceDetails;
+import org.springframework.security.oauth2.client.resource.OAuth2ProtectedResourceDetails;
+import org.springframework.security.oauth2.client.token.AccessTokenRequest;
+import org.springframework.security.oauth2.client.token.DefaultAccessTokenRequest;
+import org.springframework.security.oauth2.client.token.grant.password.ResourceOwnerPasswordAccessTokenProvider;
 import org.springframework.security.oauth2.client.token.grant.password.ResourceOwnerPasswordResourceDetails;
+import org.springframework.security.oauth2.common.OAuth2AccessToken;
+import org.springframework.security.oauth2.provider.OAuth2Authentication;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@SpringCloudApplication
-public class AuthClient1Application {
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-    public static void main(String[] args) {
-        SpringApplication.run(AuthClient1Application.class, args);
-    }
+@RestController
+public class LoginController {
+    @Autowired
+    private OAuth2RestTemplate oauth2RestTemplate;
 
 
     @Autowired
     private BaseOAuth2ProtectedResourceDetails baseOAuth2ProtectedResourceDetails;
 
+    @RequestMapping("/login1")
+    public String login(HttpServletResponse response, HttpServletRequest request) {
 
-    @Bean
-    public OAuth2RestTemplate oauth2RestTemplate() {
+        ResourceOwnerPasswordAccessTokenProvider resourceOwnerPasswordAccessTokenProvider = new ResourceOwnerPasswordAccessTokenProvider();
         ResourceOwnerPasswordResourceDetails resourceOwnerPasswordResourceDetails =
                 new ResourceOwnerPasswordResourceDetails();
-
+        resourceOwnerPasswordResourceDetails.setUsername("ly");
+        resourceOwnerPasswordResourceDetails.setPassword("ly");
         resourceOwnerPasswordResourceDetails.setClientId(baseOAuth2ProtectedResourceDetails.getClientId());
         resourceOwnerPasswordResourceDetails.setClientSecret(baseOAuth2ProtectedResourceDetails.getClientSecret());
         resourceOwnerPasswordResourceDetails.setAccessTokenUri(baseOAuth2ProtectedResourceDetails.getAccessTokenUri());
@@ -37,9 +43,12 @@ public class AuthClient1Application {
         resourceOwnerPasswordResourceDetails.setScope(baseOAuth2ProtectedResourceDetails.getScope());
         resourceOwnerPasswordResourceDetails.setTokenName(baseOAuth2ProtectedResourceDetails.getTokenName());
 
-        OAuth2RestTemplate restTemplate =
-                new OAuth2RestTemplate(resourceOwnerPasswordResourceDetails, new DefaultOAuth2ClientContext());
-        return restTemplate;
+        OAuth2AccessToken token = resourceOwnerPasswordAccessTokenProvider.obtainAccessToken(resourceOwnerPasswordResourceDetails,new DefaultAccessTokenRequest());
+
+        request.getSession().setAttribute("scopedTarget.oauth2ClientContext",token);
+
+
+        return "login,"+token.getValue();
     }
 
 }

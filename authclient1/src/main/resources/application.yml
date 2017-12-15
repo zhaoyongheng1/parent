@@ -36,7 +36,7 @@ security:
       userAuthorizationUri: http://oauth2.dh.com:8889/uaa/oauth/authorize
       clientId: client1
       clientSecret: client1
-      scope: read,write
+      scope: all
       grant-type: passowrd
       authorized-grant-types: password,refresh_token
       resource-ids: authclient1
@@ -46,7 +46,10 @@ security:
       token-info-uri: http://oauth2.dh.com:8889/uaa/oauth/check_token
       user-info-uri: http://oauth2.dh.com:8889/uaa/oauth/user
   basic:
-    enabled: false
+    enabled: true
+  user:
+    password: ly
+    name: ly
 
 
 management:

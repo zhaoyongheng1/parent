@@ -12,21 +12,19 @@ import javax.servlet.http.HttpServletResponse;
 @EnableResourceServer
 public class ResourceServer extends ResourceServerConfigurerAdapter {
 
+
+
     @Override
     public void configure(HttpSecurity http) throws Exception {
 
         http
-        .exceptionHandling()
-        .authenticationEntryPoint((request, response, authException) -> response.sendError(HttpServletResponse.SC_UNAUTHORIZED))
-        .and()
-        .authorizeRequests()
-        .anyRequest().authenticated();
+        .authorizeRequests().antMatchers("/private/**").authenticated();
     }
 
 
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
-
+        resources.resourceId("authclient2");
     }
 
 

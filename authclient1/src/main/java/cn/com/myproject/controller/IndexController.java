@@ -17,6 +17,7 @@ public class IndexController {
 
     @RequestMapping("/")
     public String index1() {
+
         String str = oauth2RestTemplate.getForObject("http://zuul.dh.com:3335/private/index",String.class);
         return "client-index";
     }
