@@ -39,12 +39,12 @@ security:
       scope: all
       grant-type: passowrd
       authorized-grant-types: password,refresh_token
-      resource-ids: authclient1
-      id: authclient1
     resource:
       id: authclient1
       token-info-uri: http://oauth2.dh.com:8889/uaa/oauth/check_token
       user-info-uri: http://oauth2.dh.com:8889/uaa/oauth/user
+    sso:
+      login-path: /tologin2
   basic:
     enabled: true
   user:

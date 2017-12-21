@@ -6,24 +6,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @RestController
 public class IndexController {
 
 
 
-    @Autowired
-    private OAuth2RestTemplate oauth2RestTemplate;
-
     @RequestMapping("/")
     public String index1() {
-
-        String str = oauth2RestTemplate.getForObject("http://zuul.dh.com:3335/private/index",String.class);
         return "client-index";
     }
 
     @RequestMapping("/private/index")
-    public String index() {
+    public String index(HttpServletRequest request, HttpServletResponse response) {
         return "client-index,private";
     }
 }

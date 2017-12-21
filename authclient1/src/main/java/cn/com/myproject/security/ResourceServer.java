@@ -16,9 +16,9 @@ public class ResourceServer extends ResourceServerConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
 
         http
-        .exceptionHandling()
-        .authenticationEntryPoint((request, response, authException) -> response.sendError(HttpServletResponse.SC_UNAUTHORIZED))
-        .and()
+//        .exceptionHandling()
+//        .authenticationEntryPoint((request, response, authException) -> response.sendError(HttpServletResponse.SC_UNAUTHORIZED))
+//        .and()
                 //.requestMatchers().antMatchers("/login").and()
         .authorizeRequests()
         .antMatchers("/private/**").authenticated();
