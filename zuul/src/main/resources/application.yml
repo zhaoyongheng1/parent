@@ -7,7 +7,7 @@ spring:
     sampler:
       percentage: 1.0
   rabbitmq:
-    host: 192.168.1.211
+    host: rabbitmq.dh.com
     port: 5672
     username: test
     password: test
@@ -29,18 +29,18 @@ zuul:
     auth-client: /client1/**
     gumiho_admin_web: /admin/**
     authserver:
-      sensitiveHeaders:
+      #sensitiveHeaders:
       path: /uaa/**
       stripPrefix: false
   add-proxy-headers: true
-
+  ignored-services: '*'
+  force-original-query-string-encoding: false
 logging:
   config: classpath:log4j2.yml
 
 management:
   security:
     enabled: false
-
 
 
 

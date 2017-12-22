@@ -20,7 +20,6 @@ public class DemoController {
 
 
 
-
     @RequestMapping(value = "/add" ,method = RequestMethod.GET)
     public Integer add(@RequestParam Integer a, @RequestParam Integer b) {
         Integer r = a + b;
@@ -32,3 +31,4 @@ public class DemoController {
         return "111111111111111";
     }
 }
+
