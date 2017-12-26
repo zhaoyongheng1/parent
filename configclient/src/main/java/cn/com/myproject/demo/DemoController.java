@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RefreshScope
 @RestController
+@RequestMapping(value = "/config")
 public class DemoController {
 
     @Value("${from}")
@@ -18,5 +19,9 @@ public class DemoController {
     @RequestMapping("/from")
     public String from() {
         return this.from;
+    }
+    @RequestMapping("/lei")
+    public String lei() {
+        return "hello";
     }
 }
