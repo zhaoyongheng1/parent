@@ -16,12 +16,15 @@ public class DemoController {
     @Value("${from}")
     private String from;
 
+    @Value("${server.port}")
+    private String serverPort;
+
     @RequestMapping("/from")
     public String from() {
         return this.from;
     }
     @RequestMapping("/lei")
     public String lei() {
-        return "hello";
+        return "hello  configclient-dev.yml server.port=" + serverPort ;
     }
 }
