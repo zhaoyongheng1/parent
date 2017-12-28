@@ -2,61 +2,50 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<!--<parent>-->
-		<!--<artifactId>parent</artifactId>-->
-		<!--<groupId>cn.com.myproject</groupId>-->
-		<!--<version>0.0.2-SNAPSHOT</version>-->
-	<!--</parent>-->
 	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.8.RELEASE</version>
+		<artifactId>parent</artifactId>
+		<groupId>cn.com.myproject</groupId>
+		<version>0.0.2-SNAPSHOT</version>
 	</parent>
+
 	<groupId>cn.com.myproject</groupId>
 	<artifactId>zipkinserver</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+
 
 	<properties>
 		<main.basedir>${project.basedir}/..</main.basedir>
 		<main.java.version>1.8</main.java.version>
-		<zipkin.version>2.4.0</zipkin.version>
+		<zipkin.version>2.3.1</zipkin.version>
 		<brave.version>4.8.0</brave.version>
 		<java.version>1.8</java.version>
 	</properties>
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>Edgware.RELEASE</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-dependencies</artifactId>
-				<version>1.5.8.RELEASE</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 
 	<dependencies>
+
+		<!--<dependency>-->
+			<!--<groupId>io.zipkin.java</groupId>-->
+			<!--<artifactId>zipkin-server</artifactId>-->
+			<!--<version>${zipkin.version}</version>-->
+		<!--</dependency>-->
+
+
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-eureka</artifactId>
+			<artifactId>spring-cloud-sleuth-zipkin-stream</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-stream-rabbit</artifactId>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-			<exclusions>
-				<exclusion>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-starter-tomcat</artifactId>
-				</exclusion>
-			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
 
 		<!-- reduces http transport latency -->
@@ -64,6 +53,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-undertow</artifactId>
 		</dependency>
+
 
 		<!-- zipkin requires exporting /health endpoint -->
 		<dependency>

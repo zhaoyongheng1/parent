@@ -2,7 +2,13 @@ spring:
   profiles:
     include: myproject
   application:
-      name: zipkinserver
+      name: zipkinserver1
+  rabbitmq:
+    host: rabbitmq.dh.com
+    port: 5672
+    username: hystrix
+    password: hystrix
+    virtual-host: hystrix
 
 eureka:
   client:

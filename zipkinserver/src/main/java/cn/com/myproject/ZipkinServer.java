@@ -15,14 +15,19 @@ package cn.com.myproject;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.sleuth.zipkin.stream.EnableZipkinStreamServer;
+import zipkin.server.EnableZipkinServer;
+import zipkin.server.RegisterZipkinHealthIndicators;
 
 @SpringBootApplication
-//@EnableZipkinServer
+@EnableDiscoveryClient
+@EnableZipkinStreamServer
 public class ZipkinServer {
 
   public static void main(String[] args) {
-//    new SpringApplicationBuilder(ZipkinServer.class)
-//        .listeners(new RegisterZipkinHealthIndicators())
-//        .properties("spring.config.name=zipkin-server").run(args);
+    new SpringApplicationBuilder(ZipkinServer.class)
+        .listeners(new RegisterZipkinHealthIndicators())
+        .properties("spring.config.name=zipkin-server").run(args);
   }
 }
