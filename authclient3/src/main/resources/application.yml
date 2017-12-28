@@ -1,6 +1,6 @@
 spring:
   application:
-    name: auth-client2
+    name: auth-client3
   datasource:
     name: oauth
     url: jdbc:mysql://mysql01.dh.com:3306/cloud_auth
@@ -16,11 +16,11 @@ spring:
     virtual-host: test
 # Define the port where the API gateway server would be running
 server:
-  port: 3336
+  port: 3337
   context-path: /
   session:
     cookie:
-      name: oauth2session2
+      name: oauth2session3
 
 # Define the Eureka server that handles service registration
 eureka:
@@ -33,14 +33,14 @@ security:
     client:
       accessTokenUri: http://oauth2.dh.com:8889/uaa/oauth/token
       userAuthorizationUri: http://oauth2.dh.com:8889/uaa/oauth/authorize
-      clientId: client2
-      clientSecret: client2
+      clientId: client3
+      clientSecret: client3
       scope: all
-      resource-ids: authclient2
-      id: authclient2
+      resource-ids: authclient3
+      id: authclient3
       authorized-grant-types: authorization_code,refresh_token
     resource:
-      id: authclient2
+      id: authclient3
       token-info-uri: http://oauth2.dh.com:8889/uaa/oauth/check_token
       user-info-uri: http://oauth2.dh.com:8889/uaa/oauth/user
     sso:

@@ -3,13 +3,14 @@ package cn.com.myproject.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
+import org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2SsoProperties;
+import org.springframework.boot.autoconfigure.security.oauth2.resource.UserInfoRestTemplateFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.oauth2.client.DefaultOAuth2ClientContext;
 import org.springframework.security.oauth2.client.OAuth2RestTemplate;
-import org.springframework.security.oauth2.client.token.grant.code.AuthorizationCodeResourceDetails;
+import org.springframework.security.oauth2.client.token.grant.password.ResourceOwnerPasswordAccessTokenProvider;
 import org.springframework.security.web.csrf.CsrfFilter;
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.security.web.csrf.CsrfTokenRepository;
@@ -27,20 +28,22 @@ import java.io.IOException;
 /**
  *
  */
-//@Configuration
-//@EnableOAuth2Sso
+@Configuration
+@EnableOAuth2Sso
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
+    @Autowired
+    private OAuth2SsoProperties oAuth2SsoProperties;
+
+
     @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.formLogin().loginPage("/login").permitAll().and()
-                .requestMatchers().antMatchers("/","/login","/logout")
-                .and().authorizeRequests().antMatchers("/private/**").authenticated()
-                .and().csrf()
+    public void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests().antMatchers("/private/**",oAuth2SsoProperties.getLoginPath()).authenticated()
+                .and()
+                .csrf()
                 .csrfTokenRepository(csrfTokenRepository()).and()
                 .addFilterAfter(csrfHeaderFilter(), CsrfFilter.class)
-                .logout().logoutUrl("/logout").permitAll()
-                .logoutSuccessUrl("/");
+                  ;
 
 
     }
@@ -48,6 +51,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 
     private Filter csrfHeaderFilter() {
+
+
+
         return new OncePerRequestFilter() {
             @Override
             protected void doFilterInternal(HttpServletRequest request,

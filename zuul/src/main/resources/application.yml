@@ -2,7 +2,7 @@ spring:
   aop:
     proxyTargetClass: true
   application:
-    name: api-gateway
+    name: zuul
   sleuth:
     sampler:
       percentage: 1.0
@@ -17,6 +17,9 @@ spring:
 server:
   port: 3333
   context-path: /
+  session:
+      cookie:
+        name: zuul
 
 # Define the Eureka server that handles service registration
 eureka:
@@ -26,21 +29,23 @@ eureka:
 
 zuul:
   routes:
-    auth-client: /client1/**
+    auth-client: /authclient/**
+    auth-client2: /authclient2/**
     gumiho_admin_web: /admin/**
-    authserver:
-      #sensitiveHeaders:
-      path: /uaa/**
-      stripPrefix: false
   add-proxy-headers: true
   ignored-services: '*'
   force-original-query-string-encoding: false
+  add-host-header: true
+
+
 logging:
   config: classpath:log4j2.yml
 
 management:
   security:
     enabled: false
+
+
 
 
 

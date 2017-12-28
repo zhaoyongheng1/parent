@@ -1,23 +1,24 @@
 spring:
   application:
-    name: configclient  #对应文件的业务名称
+    name: configclient
   cloud:
     config:
-         uri: http://localhost:7001
-         #label:  master
-         profile: dev
-server:
-   port: 8081
-   # Use different context-path to avoid session cookie overlapping
-   context-path: /client
-    #  use-forward-headers: true
+      discovery:
+        enabled: true
+        service-id: configserver
+  profiles:
+    active: dev
+
+
+
+
 
 
 
 eureka:
   client:
     service-url:
-      defaultZone: http://192.168.1.242:8761/eureka/, http://192.168.1.243:8761/eureka/, http://192.168.1.244:8761/eureka/
-      register-with-eureka: false
+      defaultZone: http://eureka242.dh.com:8761/eureka/, http://eureka243.dh.com:8761/eureka/, http://eureka244.dh.com:8761/eureka/
+      register-with-eureka: true
   instance:
     prefer-ip-address: true

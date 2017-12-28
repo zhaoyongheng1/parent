@@ -1,26 +1,25 @@
 spring:
+  aop:
+    proxyTargetClass: true
   application:
-    name: auth-client2
-  datasource:
-    name: oauth
-    url: jdbc:mysql://mysql01.dh.com:3306/cloud_auth
-    username: cloud
-    password: cloud
-    type: com.alibaba.druid.pool.DruidDataSource
-    driver-class-name: com.mysql.jdbc.Driver
+    name: zuul
+  sleuth:
+    sampler:
+      percentage: 1.0
   rabbitmq:
     host: rabbitmq.dh.com
     port: 5672
     username: test
     password: test
     virtual-host: test
+
 # Define the port where the API gateway server would be running
 server:
-  port: 3336
+  port: 3334
   context-path: /
   session:
-    cookie:
-      name: oauth2session2
+      cookie:
+        name: zuuloauth
 
 # Define the Eureka server that handles service registration
 eureka:
@@ -28,23 +27,37 @@ eureka:
     serviceUrl:
       defaultZone: http://192.168.1.242:8761/eureka/,http://192.168.1.243:8761/eureka/,http://192.168.1.244:8761/eureka/
 
+zuul:
+  routes:
+    auth-client: /authclient/**
+    auth-client2: /authclient2/**
+    gumiho_admin_web: /admin/**
+    authserver:
+      #sensitiveHeaders:
+      path: /uaa/**
+      stripPrefix: false
+  add-proxy-headers: true
+  ignored-services: '*'
+  force-original-query-string-encoding: false
+  add-host-header: true
+
+
 security:
   oauth2:
     client:
       accessTokenUri: http://oauth2.dh.com:8889/uaa/oauth/token
       userAuthorizationUri: http://oauth2.dh.com:8889/uaa/oauth/authorize
-      clientId: client2
-      clientSecret: client2
+      clientId: zuul
+      clientSecret: zuul
       scope: all
-      resource-ids: authclient2
-      id: authclient2
-      authorized-grant-types: authorization_code,refresh_token
+      id: zull
+      registered-redirect-uri:
     resource:
-      id: authclient2
+      id: zuul
       token-info-uri: http://oauth2.dh.com:8889/uaa/oauth/check_token
       user-info-uri: http://oauth2.dh.com:8889/uaa/oauth/user
     sso:
-      login-path: /ssoLogin
+      login-path: /login
   basic:
     enabled: true
   user:
@@ -52,15 +65,13 @@ security:
     name: ly
 
 
+logging:
+  config: classpath:log4j2.yml
+
 management:
   security:
-    enabled: false
+    enabled: true
 
-logging:
-  level.root: DEBUG
-  file: ./logs/log.log
-  level.org.apache.http: INFO
-  level.com.netflix.discovery: INFO
 
 
 

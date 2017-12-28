@@ -37,6 +37,8 @@
         <module>authclient</module>
         <module>authclient1</module>
         <module>authclient2</module>
+        <module>zuuloauth</module>
+        <module>authclient3</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

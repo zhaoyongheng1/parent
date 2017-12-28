@@ -13,12 +13,14 @@ spring:
     host: 192.168.1.203
     prot: 6379
     password:
-
 # Define the port where the UAA server would be running
 server:
   port: 8889
   # Use different context-path to avoid session cookie overlapping
   context-path: /uaa
+  session:
+    cookie:
+      name: authserver
 #  use-forward-headers: true
 
 # Define the Eureka server that handles service registration
@@ -39,7 +41,7 @@ security:
   oauth2:
     resource:
       id: authserver
-      token-info-uri: http://oauth2.dh.com:8889/uaa/oauth/check_token
+      token-info-uri: http://oauth2.dh.com:3334/uaa/oauth/check_token
 
 logging:
   level.root: DEBUG

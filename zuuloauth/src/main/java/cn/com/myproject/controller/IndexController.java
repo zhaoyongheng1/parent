@@ -14,11 +14,10 @@ public class IndexController {
 
     @RequestMapping("/")
     public String index(HttpServletRequest request){
-        return "zuul-index";
+        return "zuuloauth-index";
     }
-
     @RequestMapping("/private/index")
     public String index1(HttpServletRequest request){
-        return "zuul-index,private";
+        return "zuuloauth-index,private";
     }
 }

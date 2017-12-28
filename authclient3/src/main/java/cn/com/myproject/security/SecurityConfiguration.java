@@ -3,17 +3,24 @@ package cn.com.myproject.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
-import org.springframework.context.annotation.Bean;
+import org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2SsoProperties;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.oauth2.client.DefaultOAuth2ClientContext;
-import org.springframework.security.oauth2.client.OAuth2RestTemplate;
-import org.springframework.security.oauth2.client.token.grant.code.AuthorizationCodeResourceDetails;
+import org.springframework.security.config.annotation.web.configurers.ExceptionHandlingConfigurer;
+import org.springframework.security.oauth2.client.filter.OAuth2ClientAuthenticationProcessingFilter;
+import org.springframework.security.web.authentication.HttpStatusEntryPoint;
+import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
 import org.springframework.security.web.csrf.CsrfFilter;
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.security.web.csrf.CsrfTokenRepository;
 import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
+import org.springframework.security.web.util.matcher.MediaTypeRequestMatcher;
+import org.springframework.security.web.util.matcher.RequestHeaderRequestMatcher;
+import org.springframework.web.accept.ContentNegotiationStrategy;
+import org.springframework.web.accept.HeaderContentNegotiationStrategy;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.Filter;
@@ -23,27 +30,34 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Collections;
 
 /**
  *
  */
-//@Configuration
-//@EnableOAuth2Sso
+@Configuration
+@EnableOAuth2Sso
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.formLogin().loginPage("/login").permitAll().and()
-                .requestMatchers().antMatchers("/","/login","/logout")
-                .and().authorizeRequests().antMatchers("/private/**").authenticated()
-                .and().csrf()
-                .csrfTokenRepository(csrfTokenRepository()).and()
-                .addFilterAfter(csrfHeaderFilter(), CsrfFilter.class)
-                .logout().logoutUrl("/logout").permitAll()
-                .logoutSuccessUrl("/");
+    @Autowired
+    private OAuth2SsoProperties oAuth2SsoProperties;
 
+
+    @Override
+    public void configure(HttpSecurity http) throws Exception {
+//        http.formLogin().loginPage("/login").permitAll().and()
+//                .requestMatchers().antMatchers("/","/login","/logout")
+//                .and().authorizeRequests().antMatchers("/private/**").authenticated()
+//                .and().csrf()
+//                .csrfTokenRepository(csrfTokenRepository()).and()
+//                .addFilterAfter(csrfHeaderFilter(), CsrfFilter.class)
+//                .logout().logoutUrl("/logout").permitAll()
+//                .logoutSuccessUrl("/");
+        http.authorizeRequests().antMatchers("/private/**",oAuth2SsoProperties.getLoginPath()).authenticated();
 
     }
+
+
 
 
 
